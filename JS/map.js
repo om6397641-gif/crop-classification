@@ -61,11 +61,11 @@ var analysisSatellite = L.tileLayer(
 });
 
 // ==========================
-// Land Cover / Vegetation Tile
+// Land Cover / Vegetation + Urban Tile
 // ==========================
 
 var analysisGEE = L.tileLayer(
-"https://earthengine.googleapis.com/v1alpha/projects/silken-impulse-500102-a3/maps/d6460282c444bad6aed259a9a91dfc81-ae68b8aea5a887f9e867b029f448128c/tiles/{z}/{x}/{y}",
+"https://earthengine.googleapis.com/v1alpha/projects/silken-impulse-500102-a3/maps/d6460282c444bad6aed259a9a91dfc81-316fedfd5d25021e24a284ea46a6e0d5/tiles/{z}/{x}/{y}",
 {
     attribution: "Google Earth Engine",
     maxZoom: 18,
@@ -237,12 +237,13 @@ urbanLegend.onAdd = function(){
 // ==========================
 
 var cropGEE = L.tileLayer(
-"https://earthengine.googleapis.com/v1alpha/projects/silken-impulse-500102-a3/maps/2cd7ff14726afdb8b6f432da6e5e8c8d-0f14817cd41767fc1b6ea4c21e169fcd/tiles/{z}/{x}/{y}",
+"https://earthengine.googleapis.com/v1alpha/projects/silken-impulse-500102-a3/maps/14c67daa3af828da811eef3c2959a5a7-9057b0392b5793c8ba2319bc4a1a2f45/tiles/{z}/{x}/{y}",
 {
     attribution: "Google Earth Engine",
     maxZoom: 20,
     opacity: 0.9
 });
+
 // ===============================
 // Crop Legend
 // ===============================

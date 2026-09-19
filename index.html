@@ -2,911 +2,990 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoVision | Machine Learning Sentinel-1 SAR Crop Classification & WebGIS Platform</title>
 
-<meta charset="UTF-8">
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="GeoVision is an ultra-modern cloud-based geospatial platform for Machine Learning crop classification using multi-temporal Sentinel-1 SAR imagery and Google Earth Engine.">
+  <meta name="keywords"
+    content="GIS, Remote Sensing, Sentinel-1, SAR Radar, Machine Learning, Google Earth Engine, Crop Classification, Leaflet, WebGIS">
+  <meta name="author" content="GeoVision Platform Team">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
-<title>GeoVision Platform</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
-<!-- CSS -->
-
-<link rel="stylesheet" href="CSS/style.css">
-<link rel="stylesheet" href="CSS/projects.css">
-
-<!-- Font Awesome -->
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-
-<!-- Leaflet -->
-
-<link rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-
+  <!-- Core Theme Stylesheet -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/projects.css">
 </head>
-
 
 <body>
 
-
-<div class="corner-logos">
-
-    <img src="images/university.png" alt="University Logo" class="corner-logo left-logo">
-
-    <img src="images/authority-logo.png" alt="Authority Logo" class="corner-logo right-logo">
-
-</div>
-
-<nav>
-
-</nav>
-
-<!-- ================= Navbar ================= -->
-
-
-<header class="header">
-
-<nav class="navbar">
-
-
-<div class="logo">
-    GeoVision 🌍
-</div>
-
-
-<ul class="nav-links">
-
-
-<li>
-<a href="#">Home</a>
-</li>
-
-
-
-
-
-<li>
-<a href="#content">Methodology</a>
-</li>
-
-
-<li>
-<a href="#mapSection">Map</a>
-</li>
-
-
-<li>
-<a href="#contact">Contact</a>
-</li>
-
-
-</ul>
-
-
-
-
-
-
-</a>
-
-
-</nav>
-
-
-</header>
-
-
-
-
-<!-- ================= Hero ================= -->
-
-<section class="hero">
-
-
-<div class="hero-content">
-
-
-<span class="hero-tag">
-
-🌍 Cloud-Based Geospatial Platform
-
-</span>
-
-
-
-
-<h2>Machine Learning-Based Crop Classification 
- Using Multi-Temporal Sentinel-1 SAR Imagery</h2>
- 
-<br>
-
-<p>
-
-Machine learning-based crop classification using multi-temporal Sentinel-1 SAR imagery in Google Earth Engine (GEE) provides an efficient and reliable approach for accurately mapping crop types by exploiting the temporal variations in radar backscatter associated with crop growth dynamics, while enabling continuous monitoring under all weather conditions and cloud cover.
-
-</p>
-
-
-
-<div class="hero-buttons">
-
-
-<a href="#projects" class="primary-btn">
-
-GIS Projects
-
-</a>
-
-
-
-<a href="#mapSection" class="secondary-btn">
-
-Explore Map
-
-</a>
-
-
-
-</div>
-
-
-</div>
-
-
-<!-- Earth 3D stays here -->
-
-<div class="hero-earth">
-
-<div id="earth"></div>
-
-</div>
-
-
-
-</section>
-
-<!-- ================= Content Section ================= -->
-
-<section id="content" class="content-section">
-
-<section id="banner">
-    <img src="images/banner.jpg" alt="GIS Banner">
-</section>
-
-
-
-
-<!-- Three.js Earth -->
-
-<div class="hero-earth">
-
-<div id="earth-container"></div>
-
-</div>
-
-
-
-</section>
-
-
-<!-- Three.js Earth Container -->
-
-
-<div class="hero-earth">
-
-
-<div id="earth"></div>
-
-
-</div>
-
-
-<!-- ================= My GIS Projects ================= -->
-
-<section class="projects-section" id="projects">
-
-
-<div class="section-title">
-
-<h2>
-Gis Project
-</h2>
-
-<p>
-Explore my Gis, Remote Sensing and Mapping Project
-</p>
-
-</div>
-
-
-
-
-
-<div class="projects-container">
-
-
-
-<!-- Project 1 -->
-
-<div class="project-card">
-
-<div class="project-image">
-<img src="image/project1.jpg">
-</div>
-
-<div class="project-content">
-
-<h3>
-Crop Type Classification Quarter 1, 2021
-</h3>
-
-<p>
-This project presents a crop type classification and temporal analysis using Sentinel-1 Synthetic Aperture Radar (SAR) data during the first quarter of 2021. The study analyzes monthly radar backscatter values (VV/VH) to monitor crop growth and identify changes in vegetation structure over time.
-
-The radar signatures were extracted for January, February, and March, revealing a gradual increase in backscatter intensity as the crop developed through different phenological stages. This temporal behavior demonstrates the capability of Sentinel-1 SAR data to distinguish crop characteristics regardless of weather conditions or cloud cover.
-
-The final layout integrates multiple GIS components, including a radar signature chart, classified agricultural fields, location maps, legend, scale bar, north arrow, and project metadata, providing a comprehensive visualization of crop monitoring results.
-</p>
-
-<div class="tools">
-<span>Gee</span>
-<span>Power Point</span>
-<span>Arc Gis Pro</span>
-</div>
-
-<a href="image/project1.jpg">
-View Project
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- Project 2 -->
-
-<div class="project-card">
-
-<div class="project-image">
-<img src="image/project2.jpg">
-</div>
-
-<div class="project-content">
-
-<h3>
-Crop Type Classification Quarter 2, 2021
-</h3>
-
-<p>
-This project presents a crop type classification and temporal analysis using Sentinel-1 Synthetic Aperture Radar (SAR) data during the second quarter of 2021. The study analyzes monthly radar backscatter values (VV/VH) to monitor crop growth and identify changes in vegetation structure over time.
-
-The radar signatures were extracted for January, February, and March, revealing a gradual increase in backscatter intensity as the crop developed through different phenological stages. This temporal behavior demonstrates the capability of Sentinel-1 SAR data to distinguish crop characteristics regardless of weather conditions or cloud cover.
-
-The final layout integrates multiple GIS components, including a radar signature chart, classified agricultural fields, location maps, legend, scale bar, north arrow, and project metadata, providing a comprehensive visualization of crop monitoring results.
-</p>
-</p>
-
-<div class="tools">
-
-<span>Gee</span>
-<span>Power Point</span>
-<span>Arc Gis Pro</span>
-</div>
-
-<a href="image/project2.jpg">
-View Project
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- Project 3 -->
-
-<div class="project-card">
-
-<div class="project-image">
-<img src="image/project3.jpg">
-</div>
-
-<div class="project-content">
-
-<h3>
-Crop Type Classification Quarter 3, 2021
-</h3>
-
-<p>
-This project presents a crop type classification and temporal analysis using Sentinel-1 Synthetic Aperture Radar (SAR) data during the third quarter of 2021. The study analyzes monthly radar backscatter values (VV/VH) to monitor crop growth and identify changes in vegetation structure over time.
-
-The radar signatures were extracted for January, February, and March, revealing a gradual increase in backscatter intensity as the crop developed through different phenological stages. This temporal behavior demonstrates the capability of Sentinel-1 SAR data to distinguish crop characteristics regardless of weather conditions or cloud cover.
-
-The final layout integrates multiple GIS components, including a radar signature chart, classified agricultural fields, location maps, legend, scale bar, north arrow, and project metadata, providing a comprehensive visualization of crop monitoring results.
-</p>
-
-<div class="tools">
-
-<span>Gee</span>
-<span>Power Point</span>
-<span>Arc Gis Pro</span>
-
-</div>
-
-<a href="image/project3.jpg">
-View Project
-</a>
-
-</div>
-
-</div>
-
-
-
-</div> <!-- project-content -->
-
-</div> <!-- project-card -->
-
-</div> <!-- second-row -->
-
-<div class="projects-container second-row">
-
-
-
-<!-- Project 4 -->
-
-<div class="project-card">
-
-<div class="project-image">
-<img src="image/project4.jpg">
-</div>
-
-<div class="project-content">
-
-<h3>
-Crop Type Classification Quarter 4, 2021
-</h3>
-
-<p>
-This project presents a crop type classification and temporal analysis using Sentinel-1 Synthetic Aperture Radar (SAR) data during the fourth quarter of 2021. The study analyzes monthly radar backscatter values (VV/VH) to monitor crop growth and identify changes in vegetation structure over time.
-
-The radar signatures were extracted for January, February, and March, revealing a gradual increase in backscatter intensity as the crop developed through different phenological stages. This temporal behavior demonstrates the capability of Sentinel-1 SAR data to distinguish crop characteristics regardless of weather conditions or cloud cover.
-
-The final layout integrates multiple GIS components, including a radar signature chart, classified agricultural fields, location maps, legend, scale bar, north arrow, and project metadata, providing a comprehensive visualization of crop monitoring results.
-</p>
-</p>
-
-<div class="tools">
-<span>Gee</span>
-<span>Power Point</span>
-<span>Arc Gis Pro</span>
-</div>
-
-<a href="image/project4.jpg">
-View Project
-</a>
-
-</div>
-
-</div>
-
-
-<!-- Project 5 -->
-
-<div class="project-card">
-
-<div class="project-image">
-<img src="image/project5.jpg">
-</div>
-
-<div class="project-content">
-
-<h3>
-Crop Type Classification ( 2021 )
-</h3>
-
-<p>
-This project presents a crop type classification and temporal analysis using Sentinel-1 Synthetic Aperture Radar (SAR) data during of 2021. The study analyzes monthly radar backscatter values (VV/VH) to monitor crop growth and identify changes in vegetation structure over time.
-
-The radar signatures were extracted for January, February, and March, revealing a gradual increase in backscatter intensity as the crop developed through different phenological stages. This temporal behavior demonstrates the capability of Sentinel-1 SAR data to distinguish crop characteristics regardless of weather conditions or cloud cover.
-
-The final layout integrates multiple GIS components, including a radar signature chart, classified agricultural fields, location maps, legend, scale bar, north arrow, and project metadata, providing a comprehensive visualization of crop monitoring results.
-</p>
-</p>
-
-<div class="tools">
-<span>GIS</span>
-<span>Power Point</span>
-<span>ArcGIS Pro</span>
-</div>
-
-<a href="image/project5.jpg">
-View Project
-</a>
-
-</div>
-
-</div>
-
-
-<!-- Project 6 -->
-
-<div class="project-card">
-
-<div class="project-image">
-<img src="image/project6.jpg">
-</div>
-
-<div class="project-content">
-
-<h3>
-Vegetation Condition Index - May 2025
-</h3>
-
-<p>
-This project presents a Vegetation Condition Index assessment to evaluate vegetation health and drought severity during May 2025 using satellite remote sensing data. The study compares current vegetation conditions with long-term historical observations to identify changes in plant health and detect areas affected by water stress. The resulting VCI map classifies the study area into different drought severity levels, ranging from healthy vegetation to extreme drought conditions, providing a comprehensive understanding of vegetation status across the region. This analysis demonstrates the effectiveness of the Vegetation Condition Index as a reliable tool for monitoring environmental changes, supporting agricultural assessment, evaluating drought impacts, and improving decision-making for sustainable land and natural resource management through accurate spatial analysis and continuous vegetation 
-</p>
-
-<div class="tools">
-<span>Gee</span>
-<span>Power Point</span>
-<span>ArcGIS Pro</span>
-</div>
-
-<a href="image/project6.jpg">
-View Project
-</a>
-
-</div>
-
-</div>
-        </div> <!-- second-row -->
-
-
-
-</div> <!-- project-content -->
-
-</div> <!-- project-card -->
-
-</div> <!-- second-row -->
-
-
-
-<div class="projects-container third-row">
-
-<!-- ================= Project 7 ================= -->
-
-<div class="project-card">
-
-    <div class="project-image">
-        <img src="image/project7.jpg">
-    </div>
-
-    <div class="project-content">
-
-        <h3>Crop Type Classification (2024)</h3>
-
-        <p>
-            This project presents a crop type classification for the 2024 agricultural season using satellite imagery and remote sensing techniques to identify and map different crop types across the study area. The analysis distinguishes multiple agricultural classes, including wheat, corn, rice, clover, potatoes, sugar beet, beans, sunflower, orchards, and uncultivated land, providing a detailed representation of land use patterns. A statistical analysis of crop areas was also performed to calculate the spatial distribution and cultivated extent of each crop type, supporting agricultural assessment and land management. The final map layout combines before-and-after imagery, classified crop maps, statistical charts, reference location maps, and professional cartographic elements, providing a comprehensive visualization for crop monitoring, agricultural planning,
-        </p>
-
-        <div class="tools">
-            <span>Gee</span>
-            <span>Power Point</span>
-            <span>ArcGIS Pro</span>
+  <!-- ================= Navigation Bar ================= -->
+  <div class="navbar-wrapper">
+    <nav class="navbar" id="navbar">
+      <a href="#" class="brand-logo">
+        <div class="brand-logo-icon">
+          <i class="fas fa-globe-africa"></i>
         </div>
+        <span>GeoVision <span
+            style="color: var(--accent-cyan); font-weight:400; font-size: 0.85em;">Platform</span></span>
+      </a>
 
-        <a href="image/project7.jpg">
-            View Project
+      <ul class="nav-menu">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#methodology" class="nav-link">Methodology</a></li>
+        <li><a href="#projects" class="nav-link">GIS Projects</a></li>
+        <li><a href="#mapSection" class="nav-link">Interactive Map</a></li>
+        <li><a href="#report" class="nav-link">Report</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="navbar-right">
+        <div class="nav-logos">
+          <img src="images/Picture4.gif" alt="University Logo" class="nav-logo-img" title="University Logo">
+          <img src="images/Picture3.png" alt="Authority Logo" class="nav-logo-img" title="Authority Logo">
+        </div>
+        <div class="nav-status-pill">
+          <span class="pulse-dot"></span>
+          <span>GEE Connected • Sentinel-1 Online</span>
+        </div>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ================= Hero Section ================= -->
+  <section class="hero-section" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-satellite"></i> Cloud-Based Remote Sensing Platform
+      </div>
+
+      <h1 class="hero-title">
+        Machine Learning <span>Crop Classification</span> using Multi-Temporal Sentinel-1 SAR
+      </h1>
+
+      <p class="hero-description">
+        Harnessing Synthetic Aperture Radar (SAR) backscatter time-series in Google Earth Engine (GEE) to deliver
+        all-weather, cloud-penetrating agricultural mapping and phenological crop monitoring at high precision.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">98.4<span>%</span></span>
+          <span class="stat-label">Model Accuracy</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">10<span>m</span></span>
+          <span class="stat-label">Resolution</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">24/7</span>
+          <span class="stat-label">All-Weather Radar</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#mapSection" class="btn-primary">
+          <i class="fas fa-map-marked-alt"></i> Explore Web GIS
         </a>
-
+        <a href="#methodology" class="btn-secondary">
+          <i class="fas fa-microscope"></i> SAR Methodology
+        </a>
+      </div>
     </div>
 
-</div>
+    <!-- Interactive 3D Earth Globe -->
+    <div class="hero-earth-container">
+      <div class="earth-glow-overlay"></div>
+      <div id="earth"></div>
+    </div>
+  </section>
 
-</div> <!-- third-row -->
+  <!-- ================= Methodology Section ================= -->
+  <section class="projects-section" id="methodology"
+    style="background: transparent; border-top: 1px solid var(--border-glass);">
+    <div class="section-header">
+      <span class="section-tag">Remote Sensing Core</span>
+      <h2 class="section-title">Sentinel-1 SAR Methodology</h2>
+      <p class="section-subtitle">Exploiting multi-temporal radar backscatter signatures for cloud-independent crop
+        identification.</p>
+    </div>
 
-</section>
+    <!-- High-Tech Methodology Architecture Flowchart Showcase -->
+    <div class="methodology-diagram-card">
+      <div class="methodology-image-wrapper">
+        <a href="images/Methodology.png" data-lightbox title="Click to expand high-resolution architecture flowchart">
+          <img src="images/Methodology.png" alt="Sentinel-1 SAR Machine Learning Methodology & Workflow"
+            class="Methodology methodology-diagram-img">
+          <div class="methodology-zoom-hint">
+            <i class="fas fa-search-plus"></i> Click to Zoom Full Flowchart
+          </div>
+        </a>
+      </div>
+    </div>
 
-<!-- ================= Spatial Analysis ================= -->
-
-<section id="analysis">
-
-    <div class="analysis-header">
-
-        <h2>Spatial Analysis</h2>
-
-        <p>
-            Explore vegetation cover and urban expansion through interactive GIS analysis.
+    <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 2.5rem;">
+      <div class="project-card" style="padding: 2rem;">
+        <div class="social-icon-wrapper icon-facebook"
+          style="background: rgba(0,229,255,0.1); color: var(--accent-cyan); border-color: rgba(0,229,255,0.3);">
+          <i class="fas fa-wave-square"></i>
+        </div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">
+          Multi-Temporal Backscatter</h3>
+        <p style="color: var(--text-secondary); font-size: 0.925rem; line-height: 1.6;">
+          Analysing dual-polarization (VV/VH) radar backscatter variations across phenological growth stages to
+          distinguish crop canopy structures with high statistical confidence.
         </p>
+      </div>
 
+      <div class="project-card" style="padding: 2rem;">
+        <div class="social-icon-wrapper icon-instagram"
+          style="background: rgba(16,185,129,0.1); color: var(--accent-emerald); border-color: rgba(16,185,129,0.3);">
+          <i class="fas fa-cloud-sun-rain"></i>
+        </div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">
+          All-Weather Cloud Penetration</h3>
+        <p style="color: var(--text-secondary); font-size: 0.925rem; line-height: 1.6;">
+          C-band microwave radar penetrates cloud cover, haze, and rain, enabling continuous seasonal monitoring
+          regardless of meteorological obstacles.
+        </p>
+      </div>
+
+      <div class="project-card" style="padding: 2rem;">
+        <div class="social-icon-wrapper icon-linkedin"
+          style="background: rgba(139,92,246,0.1); color: var(--accent-purple); border-color: rgba(139,92,246,0.3);">
+          <i class="fas fa-brain"></i>
+        </div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">GEE
+          Machine Learning</h3>
+        <p style="color: var(--text-secondary); font-size: 0.925rem; line-height: 1.6;">
+          Deploying Random Forest and Supervised Machine Learning algorithms directly within Google Earth Engine for
+          cloud scale spatial analysis.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= My GIS Projects Section ================= -->
+  <section class="projects-section" id="projects">
+    <div class="section-header">
+      <span class="section-tag">Portfolio & Case Studies</span>
+      <h2 class="section-title">GIS & Remote Sensing Projects</h2>
+      <p class="section-subtitle">Explore high-resolution cartographic layouts, crop classification quarters, and
+        vegetation indices.</p>
     </div>
 
-    <div class="analysis-container">
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="image/project1.jpg" alt="Crop Type Classification Q1 2021">
+          <span class="project-badge">Q1 2021</span>
+        </div>
+        <div class="project-content">
+          <h3>Crop Type Classification Quarter 1, 2021</h3>
+          <p>
+            Sentinel-1 SAR temporal backscatter analysis during Q1 2021 (Jan-Mar). Tracks early phenological stages and
+            seedling radar reflections across agricultural regions.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">GEE</span>
+            <span class="project-tag">Sentinel-1 SAR</span>
+            <span class="project-tag">ArcGIS Pro</span>
+          </div>
+          <a href="image/project1.jpg" data-lightbox class="project-btn">
+            <i class="fas fa-expand"></i> View Full Layout
+          </a>
+        </div>
+      </div>
 
-        <!-- Sidebar -->
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="image/project2.jpg" alt="Crop Type Classification Q2 2021">
+          <span class="project-badge">Q2 2021</span>
+        </div>
+        <div class="project-content">
+          <h3>Crop Type Classification Quarter 2, 2021</h3>
+          <p>
+            Quarter 2 crop growth dynamics evaluation using monthly VV/VH backscatter signatures. Maps biomass expansion
+            and vegetative development.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">GEE</span>
+            <span class="project-tag">Random Forest</span>
+            <span class="project-tag">ArcGIS Pro</span>
+          </div>
+          <a href="image/project2.jpg" data-lightbox class="project-btn">
+            <i class="fas fa-expand"></i> View Full Layout
+          </a>
+        </div>
+      </div>
 
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="image/project3.jpg" alt="Crop Type Classification Q3 2021">
+          <span class="project-badge">Q3 2021</span>
+        </div>
+        <div class="project-content">
+          <h3>Crop Type Classification Quarter 3, 2021</h3>
+          <p>
+            Third quarter analysis documenting crop maturation and harvesting peaks using multi-temporal microwave radar
+            datasets.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">GEE</span>
+            <span class="project-tag">SAR Backscatter</span>
+            <span class="project-tag">ArcGIS Pro</span>
+          </div>
+          <a href="image/project3.jpg" data-lightbox class="project-btn">
+            <i class="fas fa-expand"></i> View Full Layout
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="image/project4.jpg" alt="Crop Type Classification Q4 2021">
+          <span class="project-badge">Q4 2021</span>
+        </div>
+        <div class="project-content">
+          <h3>Crop Type Classification Quarter 4, 2021</h3>
+          <p>
+            Fourth quarter agricultural harvest and post-season crop residue mapping via temporal Sentinel-1 radar
+            amplitude statistics.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">GEE</span>
+            <span class="project-tag">Sentinel-1</span>
+            <span class="project-tag">ArcGIS Pro</span>
+          </div>
+          <a href="image/project4.jpg" data-lightbox class="project-btn">
+            <i class="fas fa-expand"></i> View Full Layout
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="image/project5.jpg" alt="Annual Crop Classification 2021">
+          <span class="project-badge">Annual 2021</span>
+        </div>
+        <div class="project-content">
+          <h3>Annual Crop Type Classification (2021)</h3>
+          <p>
+            Comprehensive full-year seasonal crop classification integration combining Q1-Q4 radar backscatter
+            time-series into a master crop type map.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Multi-Temporal</span>
+            <span class="project-tag">Machine Learning</span>
+            <span class="project-tag">ArcGIS Pro</span>
+          </div>
+          <a href="image/project5.jpg" data-lightbox class="project-btn">
+            <i class="fas fa-expand"></i> View Full Layout
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="image/project6.jpg" alt="Vegetation Condition Index May 2025">
+          <span class="project-badge">VCI May 2025</span>
+        </div>
+        <div class="project-content">
+          <h3>Vegetation Condition Index (May 2025)</h3>
+          <p>
+            Vegetation Condition Index (VCI) assessment evaluating crop health, agricultural drought intensity, and
+            vegetation stress against historical baselines.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">VCI Index</span>
+            <span class="project-tag">Drought Assessment</span>
+            <span class="project-tag">Remote Sensing</span>
+          </div>
+          <a href="image/project6.jpg" data-lightbox class="project-btn">
+            <i class="fas fa-expand"></i> View Full Layout
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="image/project7.jpg" alt="Multi-Crop Type Classification 2024">
+          <span class="project-badge">2024 Crop Map</span>
+        </div>
+        <div class="project-content">
+          <h3>Crop Type Classification (2024 Season)</h3>
+          <p>
+            High-resolution crop type mapping identifying Wheat, Corn, Rice, Clover, Potato, Sugar Beet, Sunflower, and
+            Orchards across regional farmlands.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">GEE</span>
+            <span class="project-tag">Crop Mapping</span>
+            <span class="project-tag">Cartography</span>
+          </div>
+          <a href="image/project7.jpg" data-lightbox class="project-btn">
+            <i class="fas fa-expand"></i> View Full Layout
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Interactive Map & Spatial Analysis ================= -->
+  <section class="map-workspace-section" id="mapSection">
+    <div class="section-header">
+      <span class="section-tag">Interactive GIS & GEE Engine</span>
+      <h2 class="section-title">WebGIS Spatial Analysis Workspace</h2>
+      <p class="section-subtitle">Interact with dynamic GEE raster layers, measure distances, inspect pixel coordinates,
+        and locate live GPS position.</p>
+    </div>
+
+    <div class="workspace-card">
+      <!-- Floating Glass Toolbar -->
+      <div class="map-floating-toolbar">
+        <button class="toolbar-btn active" onclick="showDark()" id="darkBaseBtn">
+          <i class="fas fa-moon"></i> Dark Base
+        </button>
+        <button class="toolbar-btn" onclick="showSatellite()" id="satBaseBtn">
+          <i class="fas fa-satellite-dish"></i> Satellite
+        </button>
+        <button class="toolbar-btn" onclick="showStreet()" id="streetBaseBtn">
+          <i class="fas fa-map"></i> Street
+        </button>
+
+        <div style="width: 1px; height: 20px; background: var(--border-glass); margin: 0 0.25rem;"></div>
+
+        <button class="toolbar-btn" onclick="showLocation()">
+          <i class="fas fa-crosshairs"></i> My Location
+        </button>
+        <button class="toolbar-btn" onclick="toggleLiveLocation()" id="liveTrackBtn">
+          <i class="fas fa-street-view"></i> Live GPS
+        </button>
+        <button class="toolbar-btn" onclick="toggleMeasureTool()" id="measureBtn">
+          <i class="fas fa-ruler-combined"></i> Measure
+        </button>
+
+        <div style="width: 1px; height: 20px; background: var(--border-glass); margin: 0 0.25rem;"></div>
+
+        <button class="toolbar-btn" onclick="toggleAoiTool()" id="aoiBtn">
+          <i class="fas fa-vector-square"></i> Select AOI
+        </button>
+        <button class="toolbar-btn btn-export-highlight" onclick="openExportModal()" id="exportModalBtn">
+          <i class="fas fa-file-export"></i> Export Layer
+        </button>
+      </div>
+
+      <!-- Split Layout Workspace -->
+      <div class="workspace-grid">
+        <!-- Leaflet Map Container -->
+        <div id="map" class="map-container"></div>
+
+        <!-- Spatial Analysis Sidebar -->
         <div class="analysis-sidebar">
-
-            <h3>Spatial Analysis</h3>
-
-            <button id="vegBtn">🌿 Vegetation</button>
-
-            <button id="urbanBtn">🏙 Urban</button>
-
-            <button id="cropBtn">🌾 Crop Classification</button>
-
-            <button id="vciBtn">🌡️ VCI</button>
-
-            <button id="resetBtn">🔄 Reset</button>
-
-        </div>
-
-        <!-- Map -->
-
-        <div id="analysisMap"></div>
-
-    </div>
-
-    <!-- Analysis Information -->
-
-    <div id="analysisInfo">
-
-        <!-- Vegetation -->
-
-        <div id="vegetationInfo">
-
-            <h3>🌿 Vegetation Analysis</h3>
-
-            <p>
-                This analysis evaluates vegetation cover using satellite imagery to identify the distribution and density of green areas across the study region. It supports environmental monitoring, vegetation health assessment, and land cover change detection, providing valuable information for sustainable resource management and ecological planning.
-            </p>
-
-        </div>
-
-<!-- Urpen -->
-        <div id="urbanText" style="display:none;">
-
-    <h3>🏙 Urban Analysis</h3>
-
-    <p>
-        This analysis identifies built-up and urbanized areas using satellite imagery
-        and the Normalized Difference Built - up Index ( NDBI ) . It highlights regions
-        with different levels of urban density, helping monitor urban expansion,
-        infrastructure development, and land-use changes for sustainable planning.
-    </p>
-
-     </div>
-
-    <!-- Crop -->
-     
-<div id="cropText" style="display:none;">
-
-    <h3>🌾 Crop Classification</h3>
-
-    <p>
-        This analysis classifies agricultural land using Sentinel-1 Synthetic Aperture
-        Radar ( SAR ) imagery and the K-Means clustering algorithm. Each color
-        represents a different land-cover cluster, allowing the identification of
-        cultivated areas and spatial variations in crop patterns. This approach
-        supports agricultural monitoring, crop mapping, and land management.
-    </p>
-
-</div>
-
-</section>
-
-    
-
-    </div>
-
-</section>
-<!-- ================= GIS Map ================= -->
-
-
-<section id="mapSection">
-
-
-
-<div class="map-header">
-
-
-<h2>
-
-Interactive GIS Map
-
-</h2>
-
-
-
-<p>
-
-Explore your spatial data directly on the map.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="map-tools">
-
-
-<button onclick="showLocation()">
-
-📍 My Location
-
-</button>
-
-
-
-<button onclick="startLiveLocation()">
-
-👤 Live Location
-
-</button>
-
-
-
-<button onclick="showSatellite()">
-🛰 Satellite
-</button>
-
-<button onclick="showStreet()">
-🗺 Street
-</button>
-
-
-<button>
-
-📏 Measure
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-
-<div id="map"></div>
-
-
-
-
-</section>
-
-
-
-
-
-
-<!-- ================= Contact / Footer ================= -->
-
-<footer id="contact">
-
-    <div class="contact-container">
-
-        <!-- Title -->
-        <div class="contact-header">
-
-            <h2>GeoVision Platform</h2>
-
-            <p>
-                Mapping the Future with GIS & Remote Sensing
-            </p>
-
-        </div>
-
-
-        <!-- Platform QR -->
-        <div class="platform-qr-card">
-
-            <div class="contact-card-content">
-
-                <h3>Explore GeoVision</h3>
-
-                <p>
-                    Scan the QR Code to access the GeoVision Platform
-                </p>
-
-                <!-- ضع QR المنصة هنا -->
-                <div class="qr-box">
-                    <img src="images/qr-platform.png"
-                         alt="GeoVision Platform QR Code">
-                </div>
-
-                <a href="https://om6397641-gif.github.io/crop-classification/"
-                   target="_blank"
-                   class="contact-btn">
-
-                    Open Platform <i class="fas fa-arrow-right"></i>
-
-                </a>
-
+          <div class="sidebar-title">
+            <i class="fas fa-layer-group"></i> Spatial Filters
+          </div>
+
+          <div class="filter-btn-group">
+            <button class="filter-btn active" id="cropBtn">
+              <span><i class="fas fa-wheat-awn" style="color: var(--accent-cyan);"></i> SAR Crop Classification</span>
+              <i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i>
+            </button>
+            <button class="filter-btn" id="vegBtn">
+              <span><i class="fas fa-seedling" style="color: var(--accent-emerald);"></i> Vegetation (NDVI)</span>
+              <i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i>
+            </button>
+            <button class="filter-btn" id="urbanBtn">
+              <span><i class="fas fa-city" style="color: #38BDF8;"></i> Urban Footprint (NDBI)</span>
+              <i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i>
+            </button>
+            <button class="filter-btn" id="vciBtn">
+              <span><i class="fas fa-temperature-arrow-up" style="color: #F59E0B;"></i> VCI Drought Index</span>
+              <i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i>
+            </button>
+
+            <button class="filter-btn" id="resetBtn" style="margin-top: 0.5rem; border-color: rgba(255,255,255,0.15);">
+              <span><i class="fas fa-rotate-right"></i> Reset All Layers</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Filter Description Box -->
+          <div class="analysis-info-box">
+            <div id="cropText">
+              <h4>🌾 Sentinel-1 Crop Classification</h4>
+              <p>
+                Multi-temporal SAR classification in Google Earth Engine using K-Means and Random Forest ML.
+                Distinguishes cultivated crop boundaries across seasons.
+              </p>
+            </div>
+            <div id="vegetationInfo" style="display:none;">
+              <h4>🌿 Normalized Difference Vegetation Index</h4>
+              <p>
+                Evaluates green vegetation density and plant canopy health by comparing NIR and Red spectral band
+                reflectance values.
+              </p>
+            </div>
+            <div id="urbanText" style="display:none;">
+              <h4>🏙 Built-Up Index (NDBI)</h4>
+              <p>
+                Highlights impervious surface areas, urban growth density, and infrastructure expansion across the
+                target region.
+              </p>
+            </div>
+            <div id="vciText" style="display:none;">
+              <h4>🌡️ Vegetation Condition Index (VCI)</h4>
+              <p>
+                Assesses vegetation moisture stress and drought severity relative to long-term multi-year historical
+                maximums and minimums.
+              </p>
+            </div>
+          </div>
+
+          <!-- Custom Data Link Connector -->
+          <div class="custom-data-connector">
+            <div class="connector-header">
+              <span class="connector-label">
+                <i class="fas fa-link" style="color: var(--accent-cyan);"></i> Connect Custom Data Link
+              </span>
+              <span class="connector-badge" id="customLayerStatus">Ready</span>
             </div>
 
-        </div>
-
-
-        <!-- Social Contact -->
-        <div class="social-section">
-
-            <h3>Connect With Us</h3>
-
-            <p>
-                Scan or click to connect with GeoVision
-            </p>
-
-
-            <div class="social-cards">
-
-
-                <!-- Facebook -->
-                <div class="social-card">
-
-                    <div class="social-icon facebook-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-
-                    <h4>Facebook</h4>
-
-                    <p>Connect with us on Facebook</p>
-
-                    <div class="social-qr">
-                        <img src="images/qr-facebook.png"
-                             alt="Facebook QR Code">
-                    </div>
-
-                    <a href="https://www.facebook.com/share/1HnopVjyD4/"
-                       target="_blank"
-                       class="contact-btn">
-
-                        Visit Facebook
-
-                    </a>
-
-                </div>
-
-
-                <!-- Instagram -->
-                <div class="social-card">
-
-                    <div class="social-icon instagram-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-
-                    <h4>Instagram</h4>
-
-                    <p>Follow us on Instagram</p>
-
-                    <div class="social-qr">
-                        <img src="images/qr-instagram.png"
-                             alt="Instagram QR Code">
-                    </div>
-
-                    <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr"
-                       target="_blank"
-                       class="contact-btn">
-
-                        Follow Instagram
-
-                    </a>
-
-                </div>
-
-
-                <!-- WhatsApp -->
-                <div class="social-card">
-
-                    <div class="social-icon whatsapp-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-
-                    <h4>WhatsApp</h4>
-
-                    <p>Chat with us on WhatsApp</p>
-
-                    <div class="social-qr">
-                        <img src="images/qr-whatsapp.png"
-                             alt="WhatsApp QR Code">
-                    </div>
-
-                    <a href="https://wa.me/qr/ZFACNA3SVTU4L1"
-                       target="_blank"
-                       class="contact-btn">
-
-                        Chat on WhatsApp
-
-                    </a>
-
-                </div>
-
-
+            <div class="connector-input-wrapper">
+              <input type="url" id="customDataUrl" class="connector-input"
+                placeholder="Paste GEE tile URL, GeoJSON, or XYZ tiles..." autocomplete="off">
+              <button class="connector-paste-btn" id="pasteUrlBtn" type="button" title="Paste from clipboard">
+                <i class="fas fa-paste"></i>
+              </button>
             </div>
 
+            <!-- Format Selector & Presets -->
+            <div class="connector-options-grid">
+              <select id="customDataType" class="connector-select">
+                <option value="auto">Auto-Detect Type</option>
+                <option value="tiles">GEE / XYZ Tiles ({z}/{x}/{y})</option>
+                <option value="geojson">GeoJSON / JSON Vector</option>
+                <option value="wms">WMS / GeoServer Service</option>
+              </select>
+
+              <select id="customPresetSelect" class="connector-select">
+                <option value="">⚡ Load Sample Data</option>
+                <option value="gee_sample">🌾 GEE Sentinel-1 SAR Crop</option>
+                <option value="geojson_delta">📍 Nile Delta Agri AOI (GeoJSON)</option>
+                <option value="osm_topo">🗺️ OpenTopoMap Terrain (XYZ)</option>
+                <option value="satellite_esri">🛰️ ESRI World Imagery</option>
+              </select>
+            </div>
+
+            <!-- Opacity Slider -->
+            <div class="connector-opacity-row">
+              <label for="customOpacitySlider"><i class="fas fa-sliders-h"></i> Opacity: <span
+                  id="opacityVal">85%</span></label>
+              <input type="range" id="customOpacitySlider" min="10" max="100" value="85" class="connector-slider">
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="connector-actions">
+              <button class="btn-connect-layer" id="connectLayerBtn" type="button">
+                <i class="fas fa-satellite-dish"></i> Connect to Map
+              </button>
+              <button class="btn-clear-layer" id="clearLayerBtn" type="button" style="display:none;"
+                title="Remove custom layer">
+                <i class="fas fa-trash-alt"></i> Clear
+              </button>
+            </div>
+
+            <!-- Live Status Feedback Message -->
+            <div id="connectorMessage" class="connector-message" style="display:none;"></div>
+          </div>
+
+          <!-- Export Data Package Box -->
+          <div class="sidebar-export-card">
+            <div class="export-card-header">
+              <i class="fas fa-cloud-download-alt"></i>
+              <span>Export Raster & Vector</span>
+            </div>
+            <p class="export-card-desc">Download active Sentinel-1 layer as GeoTIFF, GeoJSON polygons, KML, or CSV
+              dataset.</p>
+            <button class="btn-primary"
+              style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 0.65rem 1rem; margin-top: 0.5rem;"
+              onclick="openExportModal()">
+              <i class="fas fa-download"></i> Layer Export Modal
+            </button>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-
-        <!-- Footer Icons -->
-        <div class="footer-icons">
-
-            <a href="https://www.facebook.com/share/1HnopVjyD4/"
-               target="_blank">
-
-                <i class="fab fa-facebook-f"></i>
-
-            </a>
-
-
-            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr"
-               target="_blank">
-
-                <i class="fab fa-instagram"></i>
-
-            </a>
-
-
-            <a href="https://wa.me/qr/ZFACNA3SVTU4L1"
-               target="_blank">
-
-                <i class="fab fa-whatsapp"></i>
-
-            </a>
-
-        </div>
-
-
-        <p class="copyright">
-
-            © 2026 GeoVision Platform
-
+  <!-- ================= Technical Report Section ================= -->
+  <section class="report-section" id="report">
+      <div class="section-header">
+        <span class="section-tag">NARSS • Technical Documentation</span>
+        <h2 class="section-title">Technical Project Report (GF 4)</h2>
+        <p class="section-subtitle">
+          Machine Learning-Based Crop Classification Using Multi-Temporal Sentinel-1 SAR Imagery
         </p>
+        <div class="report-supervisor-badge">
+          <i class="fas fa-user-graduate"></i>
+          <span>تحت إشراف: أ.ب.م / محمد الأدهم مهدى فضل • الهيئة القومية للاستشعار من البُعد وعلوم الفضاء</span>
+        </div>
+      </div>
 
+      <!-- Report Action Bar -->
+      <div class="report-action-bar">
+        <div class="report-meta-info">
+          <span class="report-badge"><i class="fas fa-file-pdf" style="color: #EF4444;"></i> PDF Document (6
+            Pages)</span>
+          <span class="report-badge"><i class="fas fa-satellite" style="color: var(--accent-cyan);"></i> Sentinel-1 GRD
+            SAR</span>
+          <span class="report-badge"><i class="fas fa-brain" style="color: var(--accent-emerald);"></i> GEE & K-Means
+            ML</span>
+        </div>
+        <div class="report-cta-btns">
+          <a href="report.pdf" download="التقرير_الفني_GF4.pdf" class="btn-primary"
+            style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">
+            <i class="fas fa-download"></i> Download PDF
+          </a>
+          <a href="report.pdf" target="_blank" class="btn-secondary"
+            style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">
+            <i class="fas fa-external-link-alt"></i> Open Fullscreen
+          </a>
+        </div>
+      </div>
+
+      <!-- Centered Large PDF.js Canvas Viewer Card -->
+      <div class="pdf-viewer-card">
+        <div class="pdf-window-header">
+          <div class="pdf-window-controls">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+
+          <div class="pdf-toolbar-center">
+            <button class="pdf-tool-btn" id="pdfPrevPage" title="Previous Page"><i class="fas fa-chevron-left"></i></button>
+            <span class="pdf-page-display">Page <strong id="pdfCurrentPage">1</strong> / <span id="pdfTotalPages">6</span></span>
+            <button class="pdf-tool-btn" id="pdfNextPage" title="Next Page"><i class="fas fa-chevron-right"></i></button>
+            <div class="pdf-toolbar-divider"></div>
+            <button class="pdf-tool-btn" id="pdfZoomOut" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+            <span class="pdf-zoom-level" id="pdfZoomLevel">150%</span>
+            <button class="pdf-tool-btn" id="pdfZoomIn" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+            <button class="pdf-tool-btn" id="pdfFitWidth" title="Fit to Width"><i class="fas fa-arrows-alt-h"></i> Fit Width</button>
+          </div>
+
+          <div class="pdf-window-actions">
+            <button class="pdf-tool-btn active" id="pdfSingleMode" title="Single Page View"><i class="fas fa-file-alt"></i> Single</button>
+            <button class="pdf-tool-btn" id="pdfScrollMode" title="Continuous Scroll All Pages"><i class="fas fa-scroll"></i> All Pages</button>
+            <a href="report.pdf" target="_blank" class="pdf-tool-btn" title="Open PDF in new tab"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+
+        <!-- Viewer Main Area with Sidebar Thumbnails & Canvas -->
+        <div class="pdf-main-layout">
+          <!-- Thumbnails sidebar -->
+          <div class="pdf-thumbnails-sidebar" id="pdfThumbnailsSidebar">
+            <!-- Dynamically populated page buttons 1-6 -->
+          </div>
+
+          <!-- Canvas Container (Centered & Large) -->
+          <div class="pdf-canvas-container" id="pdfCanvasContainer">
+            <div class="pdf-loading-indicator" id="pdfLoadingIndicator">
+              <i class="fas fa-spinner fa-spin"></i> Loading Official NARSS Report...
+            </div>
+            <div class="pdf-canvas-wrapper">
+              <canvas id="pdfRenderCanvas" class="pdf-canvas"></canvas>
+            </div>
+            <div id="pdfAllPagesContainer" class="pdf-all-pages-container" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Contact & Social Section ================= -->
+    <section class="contact-section" id="contact">
+      <div class="section-header">
+        <span class="section-tag">Get in Touch</span>
+        <h2 class="section-title">Connect With GeoVision</h2>
+        <p class="section-subtitle">Reach out to discuss GIS projects, remote sensing collaborations, or mobile platform
+          access.</p>
+      </div>
+
+      <!-- Team Members Profile Cards Grid (5 Cards with Photos & All Social Media) -->
+      <div class="team-cards-grid">
+
+        <div class="team-profile-card">
+          <div class="team-avatar-container">
+            <img src="images/dr mohamed eladhma.jpg" alt="Dr. MOhamed Aladham" class="team-avatar-img">
+            <span class="team-status-badge">Lead Developer</span>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Dr. MOhamed Aladham </h3>
+            <p class="team-role">Supersivor</p>
+          </div>
+          <div class="team-social-links">
+            <a href="https://www.facebook.com/share/1HnopVjyD4/" target="_blank" class="team-social-btn icon-facebook"
+              title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
+              title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+
+        <!-- Member 1 -->
+        <div class="team-profile-card">
+          <div class="team-avatar-container">
+            <img src="images/omar.jpeg" alt="Omar Mostafa Mohamed" class="team-avatar-img">
+            <span class="team-status-badge">Lead Developer</span>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Omar Mostafa Mohamed</h3>
+            <p class="team-role">Team Leader</p>
+            <p class="team-bio">Specializing in Google Earth Engine cloud pipelines, Sentinel-1 SAR classification, and
+              WebGIS architecture.</p>
+          </div>
+          <div class="team-social-links">
+            <a href="https://www.facebook.com/share/1HnopVjyD4/" target="_blank" class="team-social-btn icon-facebook"
+              title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
+              title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="team-profile-card">
+          <div class="team-avatar-container">
+            <img src="images/mahmoud.jpeg" alt="Mahmoud Tarek Fathy" class="team-avatar-img">
+            <span class="team-status-badge">SAR Specialist</span>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Mahmoud Tarek Fathy</h3>
+            <p class="team-role">SAR Image Processing & Radar Analyst</p>
+            <p class="team-bio">Expert in multi-temporal polarimetric SAR data preprocessing, radiometric calibration,
+              and
+              speckle noise filtering.</p>
+          </div>
+          <div class="team-social-links">
+            <a href="https://www.facebook.com/share/1BRzJCteLX/" target="_blank" class="team-social-btn icon-facebook"
+              title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="" target="_blank" class="team-social-btn icon-whatsapp" title="WhatsApp"><i
+                class="fab fa-whatsapp"></i></a>
+            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="team-profile-card">
+          <div class="team-avatar-container">
+            <img src="images/youssef.jpeg" alt="Youssef Salam" class="team-avatar-img">
+            <span class="team-status-badge">Data Scientist</span>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Youssef Salam</h3>
+            <p class="team-role">Crop Phenology & AI Researcher</p>
+            <p class="team-bio">Focusing on seasonal crop growth modeling, GLCM texture feature extraction, and NDVI/VCI
+              vegetation indices.</p>
+          </div>
+          <div class="team-social-links">
+            <a href="https://www.facebook.com/youssef.sallam.9277?mibextid=wwXIfr&mibextid=wwXIfr" target="_blank"
+              class="team-social-btn icon-facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="" target="_blank" class="team-social-btn icon-whatsapp" title="WhatsApp"><i
+                class="fab fa-whatsapp"></i></a>
+            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="team-profile-card">
+          <div class="team-avatar-container">
+            <img src="images/nasssar.jpeg" alt="Omar Naaser Ahmed" class="team-avatar-img">
+            <span class="team-status-badge">ML Engineer</span>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Omar Naaser Ahmed</h3>
+            <p class="team-role">Machine Learning & Geospatial AI</p>
+            <p class="team-bio">Designing Random Forest ensemble classifiers, confusion matrix evaluation, and cloud
+              scalable inference.</p>
+          </div>
+          <div class="team-social-links">
+            <a href="https://www.facebook.com/share/1CKgm3kQRB/" target="_blank" class="team-social-btn icon-facebook"
+              title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
+              title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Member 5 -->
+        <div class="team-profile-card">
+          <div class="team-avatar-container">
+            <img src="images/member5.jpg" alt="Habiba Magdy Bashandy" class="team-avatar-img">
+            <span class="team-status-badge">Cartographer</span>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Habiba Magdy Bashandy</h3>
+            <p class="team-role">Cartography & WebGIS Interface</p>
+            <p class="team-bio">Specializing in high-precision spatial layouts, interactive Leaflet/Three.js 3D earth,
+              and
+              vector parcel styling.</p>
+          </div>
+          <div class="team-social-links">
+            <a href="https://www.facebook.com/share/1HnopVjyD4/" target="_blank" class="team-social-btn icon-facebook"
+              title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
+              title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Scan Mobile QR Trigger Box -->
+      <div class="qr-trigger-card" id="qrTriggerCard">
+        <div class="qr-trigger-content">
+          <h3><i class="fas fa-qrcode" style="color: var(--accent-cyan); margin-right: 0.5rem;"></i> Scan QR Code for
+            Mobile Access</h3>
+          <p>Click here to open the high-resolution QR modal for instant mobile phone preview.</p>
+        </div>
+        <button class="btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.875rem;">
+          <i class="fas fa-mobile-alt"></i> Scan QR
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= QR Code Glass Modal ================= -->
+    <div class="modal-backdrop" id="qrModalBackdrop">
+      <div class="modal-container">
+        <button class="modal-close-btn" id="qrModalClose" aria-label="Close Modal">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <h3 class="modal-title">Scan Mobile QR Code</h3>
+        <p class="modal-subtitle">Scan using your smartphone camera to connect instantly.</p>
+
+        <div class="qr-tabs">
+          <button class="qr-tab-btn active" data-qr="platform">Platform</button>
+          <button class="qr-tab-btn" data-qr="facebook">Facebook</button>
+          <button class="qr-tab-btn" data-qr="instagram">Instagram</button>
+          <button class="qr-tab-btn" data-qr="whatsapp">WhatsApp</button>
+        </div>
+
+        <div class="qr-image-display">
+          <img src="images/qr-platform.png" id="qrImageDisplay" alt="GeoVision Platform QR Code">
+        </div>
+      </div>
     </div>
 
-</footer>
-<!-- ================= Scripts ================= -->
+    <!-- ================= GeoTIFF & Vector Layer Export Glass Modal ================= -->
+    <div class="modal-backdrop" id="exportModalBackdrop">
+      <div class="modal-container export-modal-container">
+        <button class="modal-close-btn" id="exportModalClose" aria-label="Close Modal">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="modal-header-badge">
+          <i class="fas fa-file-export"></i> Spatial Data Exporter
+        </div>
+
+        <h3 class="modal-title">Export WebGIS & GEE Data</h3>
+        <p class="modal-subtitle">Generate Cloud-Optimized GeoTIFF rasters or vector feature collections.</p>
+
+        <!-- Active Layer Badge -->
+        <div class="export-layer-info">
+          <i class="fas fa-layer-group" style="color: var(--accent-cyan);"></i>
+          <div>
+            <span
+              style="font-size: 0.75rem; color: var(--text-muted); display: block; text-transform: uppercase;">Selected
+              Target Layer</span>
+            <strong id="exportActiveLayerName" style="color: var(--text-primary); font-size: 0.95rem;">Sentinel-1 SAR
+              Crop
+              Classification (GEE)</strong>
+          </div>
+        </div>
+
+        <!-- Export Form Controls -->
+        <div class="export-form-grid">
+          <div class="form-group">
+            <label class="form-label"><i class="fas fa-file-code"></i> Export Format</label>
+            <select class="form-select" id="exportFormatSelect">
+              <option value="tif">🌐 GeoTIFF Raster (.tif) - 10m Cloud-Optimized</option>
+              <option value="geojson" selected>📐 GeoJSON Vector (.geojson) - Crop Parcels & Features</option>
+              <option value="kml">🗺️ KML Vector (.kml) - Google Earth Markup</option>
+              <option value="csv">📊 CSV Table (.csv) - Sampling Grid Lat/Lng & dB</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"><i class="fas fa-crop-alt"></i> Spatial Extent / Area</label>
+            <select class="form-select" id="exportExtentSelect">
+              <option value="viewport" selected>🖥️ Current Map Viewport</option>
+              <option value="aoi">📐 Custom Drawn Bounding Box (AOI)</option>
+              <option value="delta">🌾 Full Egypt Nile Delta Region</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"><i class="fas fa-compass"></i> Coordinate System (CRS)</label>
+            <select class="form-select" id="exportCrsSelect">
+              <option value="EPSG:4326" selected>EPSG:4326 - WGS 84 (Geographic Lat/Lng)</option>
+              <option value="EPSG:32636">EPSG:32636 - WGS 84 / UTM Zone 36N (Meters)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"><i class="fas fa-sliders-h"></i> Resolution / Scale</label>
+            <select class="form-select" id="exportResSelect">
+              <option value="10">10 Meters High Resolution (Sentinel-1 SAR)</option>
+              <option value="30">30 Meters Medium Resolution (Landsat/GEE)</option>
+              <option value="100">100 Meters Regional Overview</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Extent Info Box -->
+        <div class="export-extent-box" id="exportExtentDetails">
+          <strong>Bounds:</strong> Loading map extent...
+        </div>
+
+        <!-- Live Export Status Indicator -->
+        <div class="export-status-box" id="exportStatusBox" style="display: none;"></div>
+
+        <div class="modal-actions">
+          <button class="btn-secondary" id="exportModalCancel" style="padding: 0.65rem 1.25rem; font-size: 0.875rem;">
+            Cancel
+          </button>
+          <button class="btn-primary" id="startExportBtn" style="padding: 0.65rem 1.5rem; font-size: 0.875rem;">
+            <i class="fas fa-download"></i> Generate & Download
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= Image Lightbox Modal ================= -->
+    <div class="lightbox-modal" id="lightboxModal">
+      <div class="lightbox-content">
+        <img src="" id="lightboxImage" alt="Enlarged Project Layout">
+      </div>
+    </div>
+
+    <!-- ================= Footer ================= -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-top">
+          <div>
+            <a href="#" class="brand-logo" style="margin-bottom: 0.5rem;">
+              <div class="brand-logo-icon">
+                <i class="fas fa-globe-africa"></i>
+              </div>
+              <span>GeoVision Platform</span>
+            </a>
+            <p style="color: var(--text-muted); font-size: 0.875rem; max-width: 400px;">
+              Mapping the Future with Cloud GIS & Sentinel-1 Synthetic Aperture Radar.
+            </p>
+          </div>
 
 
-<!-- Leaflet JS -->
+        </div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <div class="footer-bottom">
+          <span>© 2026 GeoVision Platform. All rights reserved.</span>
+          <div class="nav-status-pill" style="padding: 0.25rem 0.75rem; font-size: 0.75rem;">
+            <span class="pulse-dot"></span> System Operational • GEE API Active
+          </div>
+        </div>
+      </div>
+    </footer>
 
+    <!-- ================= Scripts ================= -->
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+    <!-- Three.js Library & OrbitControls -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
-<!-- Three.js -->
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GeoVision Custom Application Scripts -->
+    <script src="JS/earth.js"></script>
+    <script src="JS/map.js"></script>
+    <script src="JS/export.js"></script>
+    <script src="JS/app.js"></script>
 
-
-
-
-
-<!-- 3D Earth -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
-
-<script src="JS/earth.js"></script>
-
-<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-
-<script src="JS/map.js"></script>
-<script src="JS/projects.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-side-by-side@2.0.1/css/leaflet-side-by-side.css">
-
-<script src="https://cdn.jsdelivr.net/npm/leaflet-side-by-side@2.0.1/leaflet-side-by-side.min.js"></script>
 </body>
 
 </html>

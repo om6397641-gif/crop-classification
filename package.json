@@ -1,0 +1,26 @@
+{
+  "name": "geovision-webgis-platform",
+  "version": "1.0.0",
+  "description": "Machine Learning Sentinel-1 SAR Crop Classification & WebGIS Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "gis",
+    "webgis",
+    "sentinel-1",
+    "sar",
+    "remote-sensing",
+    "earth-engine",
+    "leaflet",
+    "threejs",
+    "crop-classification"
+  ],
+  "author": "GeoVision Platform Team",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^59.23.2"
+  }
+}

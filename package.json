@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Machine Learning Sentinel-1 SAR Crop Classification & WebGIS Platform",
   "scripts": {
+    "build": "echo build-complete",
     "start": "node server.js",
     "dev": "node server.js"
   },

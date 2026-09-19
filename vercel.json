@@ -1,43 +1,14 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "CSS/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "JS/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "images/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "image/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.pdf",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.png",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.gif",
-      "use": "@vercel/static"
-    }
-  ],
+  "framework": null,
+  "outputDirectory": ".",
+  "cleanUrls": true,
   "routes": [
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/index.html"
     }
   ]
 }

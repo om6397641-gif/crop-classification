@@ -13,10 +13,15 @@ const MIME_TYPES = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif',
+  '.webp': 'image/webp',
   '.svg': 'image/svg+xml',
   '.json': 'application/json',
+  '.geojson': 'application/geo+json',
   '.ico': 'image/x-icon',
-  '.pdf': 'application/pdf'
+  '.pdf': 'application/pdf',
+  '.tif': 'image/tiff',
+  '.tiff': 'image/tiff'
 };
 
 const server = http.createServer((req, res) => {

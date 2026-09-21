@@ -1773,16 +1773,16 @@ body::before {
 .lightbox-modal {
   position: fixed;
   inset: 0;
-  background: rgba(7, 10, 17, 0.92);
+  background: rgba(7, 10, 17, 0.94);
   backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   z-index: 3000;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  flex-direction: column;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
 }
 
 .lightbox-modal.active {
@@ -1790,20 +1790,163 @@ body::before {
   pointer-events: auto;
 }
 
+.lightbox-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-glass);
+  z-index: 3010;
+  flex-shrink: 0;
+  gap: 1rem;
+}
+
+.lightbox-title-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lightbox-title-badge i {
+  color: var(--accent-cyan);
+}
+
+.lightbox-toolbar-center,
+.lightbox-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lightbox-tool-btn {
+  padding: 0.45rem 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.lightbox-tool-btn:hover {
+  background: rgba(0, 229, 255, 0.15);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.lightbox-tool-btn.active {
+  background: var(--accent-cyan);
+  color: #000;
+  border-color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.lightbox-close-btn {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #F87171;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.75rem;
+}
+
+.lightbox-close-btn:hover {
+  background: #EF4444;
+  color: #FFF;
+  border-color: #EF4444;
+}
+
+.lightbox-zoom-val {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  min-width: 45px;
+  text-align: center;
+}
+
+.lightbox-toolbar-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-glass);
+  margin: 0 0.25rem;
+}
+
+.lightbox-scroll-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  scroll-behavior: smooth;
+}
+
 .lightbox-content {
-  max-width: 90vw;
-  max-height: 90vh;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
   border: 1px solid var(--border-glass-hover);
+  background: #0B0F19;
+  transition: width 0.25s ease, max-width 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
-.lightbox-content img {
+/* Scroll Mode: shows full map layout width, allows clean smooth scrolling down */
+.lightbox-content.scroll-mode {
+  max-width: 1050px;
   width: 100%;
-  height: 100%;
+  height: auto;
+}
+
+.lightbox-content.scroll-mode img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Fit Screen Mode: fits within viewport height */
+.lightbox-content.fit-mode {
+  max-width: 90vw;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+}
+
+.lightbox-content.fit-mode img {
+  max-height: 82vh;
+  max-width: 90vw;
+  width: auto;
+  height: auto;
   object-fit: contain;
   display: block;
+}
+
+@media (max-width: 768px) {
+  .lightbox-toolbar {
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+  .lightbox-title-badge {
+    display: none;
+  }
+  .lightbox-scroll-wrapper {
+    padding: 1.5rem 0.75rem;
+  }
 }
 
 /* --- Footer --- */
@@ -2072,4 +2215,175 @@ body::before {
   gap: 0.75rem;
   border-top: 1px solid var(--border-glass);
   padding-top: 1rem;
+}
+
+/* ==========================================================================
+   API QR Section Styles
+   ========================================================================== */
+.api-qr-section {
+  padding: 6rem 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.api-qr-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.api-qr-card-wrapper {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 860px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.api-qr-card-wrapper:hover {
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 25px 60px rgba(0, 229, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.api-qr-card-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 229, 255, 0.08), transparent 50%);
+  pointer-events: none;
+}
+
+.api-qr-visual-box {
+  position: relative;
+  background: #FFFFFF;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.api-qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.api-qr-visual-box:hover .api-qr-img {
+  transform: scale(1.03);
+}
+
+.api-qr-scan-badge {
+  position: absolute;
+  bottom: -12px;
+  background: var(--accent-cyan);
+  color: #000;
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px var(--accent-cyan-glow);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.api-qr-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.api-qr-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.api-qr-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.api-qr-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.api-qr-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.api-qr-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.api-qr-feature-item i {
+  color: var(--accent-cyan);
+  font-size: 0.85rem;
+  width: 16px;
+  text-align: center;
+}
+
+.api-qr-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .api-qr-card-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+  
+  .api-qr-actions {
+    justify-content: center;
+  }
+  
+  .api-qr-features {
+    align-items: flex-start;
+    text-align: left;
+  }
 }

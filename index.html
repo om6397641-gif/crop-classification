@@ -50,6 +50,7 @@
         <li><a href="#projects" class="nav-link">GIS Projects</a></li>
         <li><a href="#mapSection" class="nav-link">Interactive Map</a></li>
         <li><a href="#report" class="nav-link">Report</a></li>
+        <li><a href="#api-qr" class="nav-link">API QR</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
 
@@ -544,447 +545,542 @@
 
   <!-- ================= Technical Report Section ================= -->
   <section class="report-section" id="report">
-      <div class="section-header">
-        <span class="section-tag">NARSS • Technical Documentation</span>
-        <h2 class="section-title">Technical Project Report (GF 4)</h2>
-        <p class="section-subtitle">
-          Machine Learning-Based Crop Classification Using Multi-Temporal Sentinel-1 SAR Imagery
-        </p>
-        <div class="report-supervisor-badge">
-          <i class="fas fa-user-graduate"></i>
-          <span>تحت إشراف: أ.ب.م / محمد الأدهم مهدى فضل • الهيئة القومية للاستشعار من البُعد وعلوم الفضاء</span>
+    <div class="section-header">
+      <span class="section-tag">NARSS • Technical Documentation</span>
+      <h2 class="section-title">Technical Project Report (GF 4)</h2>
+      <p class="section-subtitle">
+        Machine Learning-Based Crop Classification Using Multi-Temporal Sentinel-1 SAR Imagery
+      </p>
+      <div class="report-supervisor-badge">
+        <i class="fas fa-user-graduate"></i>
+        <span>تحت إشراف: أ.ب.م / محمد الأدهم مهدى فضل • الهيئة القومية للاستشعار من البُعد وعلوم الفضاء</span>
+      </div>
+    </div>
+
+    <!-- Report Action Bar -->
+    <div class="report-action-bar">
+      <div class="report-meta-info">
+        <span class="report-badge"><i class="fas fa-file-pdf" style="color: #EF4444;"></i> PDF Document (6
+          Pages)</span>
+        <span class="report-badge"><i class="fas fa-satellite" style="color: var(--accent-cyan);"></i> Sentinel-1 GRD
+          SAR</span>
+        <span class="report-badge"><i class="fas fa-brain" style="color: var(--accent-emerald);"></i> GEE & K-Means
+          ML</span>
+      </div>
+      <div class="report-cta-btns">
+        <a href="report.pdf" download="التقرير_الفني_GF4.pdf" class="btn-primary"
+          style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">
+          <i class="fas fa-download"></i> Download PDF
+        </a>
+        <a href="report.pdf" target="_blank" class="btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">
+          <i class="fas fa-external-link-alt"></i> Open Fullscreen
+        </a>
+      </div>
+    </div>
+
+    <!-- Centered Large PDF.js Canvas Viewer Card -->
+    <div class="pdf-viewer-card">
+      <div class="pdf-window-header">
+        <div class="pdf-window-controls">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+
+        <div class="pdf-toolbar-center">
+          <button class="pdf-tool-btn" id="pdfPrevPage" title="Previous Page"><i
+              class="fas fa-chevron-left"></i></button>
+          <span class="pdf-page-display">Page <strong id="pdfCurrentPage">1</strong> / <span
+              id="pdfTotalPages">6</span></span>
+          <button class="pdf-tool-btn" id="pdfNextPage" title="Next Page"><i class="fas fa-chevron-right"></i></button>
+          <div class="pdf-toolbar-divider"></div>
+          <button class="pdf-tool-btn" id="pdfZoomOut" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+          <span class="pdf-zoom-level" id="pdfZoomLevel">150%</span>
+          <button class="pdf-tool-btn" id="pdfZoomIn" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+          <button class="pdf-tool-btn" id="pdfFitWidth" title="Fit to Width"><i class="fas fa-arrows-alt-h"></i> Fit
+            Width</button>
+        </div>
+
+        <div class="pdf-window-actions">
+          <button class="pdf-tool-btn active" id="pdfSingleMode" title="Single Page View"><i
+              class="fas fa-file-alt"></i> Single</button>
+          <button class="pdf-tool-btn" id="pdfScrollMode" title="Continuous Scroll All Pages"><i
+              class="fas fa-scroll"></i> All Pages</button>
+          <a href="report.pdf" target="_blank" class="pdf-tool-btn" title="Open PDF in new tab"><i
+              class="fas fa-external-link-alt"></i></a>
         </div>
       </div>
 
-      <!-- Report Action Bar -->
-      <div class="report-action-bar">
-        <div class="report-meta-info">
-          <span class="report-badge"><i class="fas fa-file-pdf" style="color: #EF4444;"></i> PDF Document (6
-            Pages)</span>
-          <span class="report-badge"><i class="fas fa-satellite" style="color: var(--accent-cyan);"></i> Sentinel-1 GRD
-            SAR</span>
-          <span class="report-badge"><i class="fas fa-brain" style="color: var(--accent-emerald);"></i> GEE & K-Means
-            ML</span>
+      <!-- Viewer Main Area with Sidebar Thumbnails & Canvas -->
+      <div class="pdf-main-layout">
+        <!-- Thumbnails sidebar -->
+        <div class="pdf-thumbnails-sidebar" id="pdfThumbnailsSidebar">
+          <!-- Dynamically populated page buttons 1-6 -->
         </div>
-        <div class="report-cta-btns">
-          <a href="report.pdf" download="التقرير_الفني_GF4.pdf" class="btn-primary"
-            style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">
-            <i class="fas fa-download"></i> Download PDF
-          </a>
-          <a href="report.pdf" target="_blank" class="btn-secondary"
-            style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">
-            <i class="fas fa-external-link-alt"></i> Open Fullscreen
-          </a>
+
+        <!-- Canvas Container (Centered & Large) -->
+        <div class="pdf-canvas-container" id="pdfCanvasContainer">
+          <div class="pdf-loading-indicator" id="pdfLoadingIndicator">
+            <i class="fas fa-spinner fa-spin"></i> Loading Official NARSS Report...
+          </div>
+          <div class="pdf-canvas-wrapper">
+            <canvas id="pdfRenderCanvas" class="pdf-canvas"></canvas>
+          </div>
+          <div id="pdfAllPagesContainer" class="pdf-all-pages-container" style="display:none;"></div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Centered Large PDF.js Canvas Viewer Card -->
-      <div class="pdf-viewer-card">
-        <div class="pdf-window-header">
-          <div class="pdf-window-controls">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
+  <!-- ================= API QR Section ================= -->
+  <section class="api-qr-section" id="api-qr">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-network-wired"></i> Developer & Cloud Access</span>
+      <h2 class="section-title">API QR</h2>
+      <p class="section-subtitle">Scan to access the GeoVision REST API gateway, Google Earth Engine cloud endpoints, and mobile services.</p>
+    </div>
 
-          <div class="pdf-toolbar-center">
-            <button class="pdf-tool-btn" id="pdfPrevPage" title="Previous Page"><i class="fas fa-chevron-left"></i></button>
-            <span class="pdf-page-display">Page <strong id="pdfCurrentPage">1</strong> / <span id="pdfTotalPages">6</span></span>
-            <button class="pdf-tool-btn" id="pdfNextPage" title="Next Page"><i class="fas fa-chevron-right"></i></button>
-            <div class="pdf-toolbar-divider"></div>
-            <button class="pdf-tool-btn" id="pdfZoomOut" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
-            <span class="pdf-zoom-level" id="pdfZoomLevel">150%</span>
-            <button class="pdf-tool-btn" id="pdfZoomIn" title="Zoom In"><i class="fas fa-search-plus"></i></button>
-            <button class="pdf-tool-btn" id="pdfFitWidth" title="Fit to Width"><i class="fas fa-arrows-alt-h"></i> Fit Width</button>
-          </div>
-
-          <div class="pdf-window-actions">
-            <button class="pdf-tool-btn active" id="pdfSingleMode" title="Single Page View"><i class="fas fa-file-alt"></i> Single</button>
-            <button class="pdf-tool-btn" id="pdfScrollMode" title="Continuous Scroll All Pages"><i class="fas fa-scroll"></i> All Pages</button>
-            <a href="report.pdf" target="_blank" class="pdf-tool-btn" title="Open PDF in new tab"><i class="fas fa-external-link-alt"></i></a>
-          </div>
+    <div class="api-qr-container">
+      <div class="api-qr-card-wrapper">
+        <div class="api-qr-visual-box">
+          <a href="images/qr-api.png" data-lightbox title="Click to view full-resolution API QR Code">
+            <img src="images/qr-api.png" alt="GeoVision API QR Code" class="api-qr-img">
+          </a>
+          <span class="api-qr-scan-badge">
+            <i class="fas fa-qrcode"></i> Scan API
+          </span>
         </div>
 
-        <!-- Viewer Main Area with Sidebar Thumbnails & Canvas -->
-        <div class="pdf-main-layout">
-          <!-- Thumbnails sidebar -->
-          <div class="pdf-thumbnails-sidebar" id="pdfThumbnailsSidebar">
-            <!-- Dynamically populated page buttons 1-6 -->
+        <div class="api-qr-details">
+          <div class="api-qr-badge-row">
+            <span class="nav-status-pill" style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">
+              <span class="pulse-dot"></span> REST API Active
+            </span>
+            <span class="report-badge" style="font-size: 0.75rem;">
+              <i class="fas fa-satellite" style="color: var(--accent-cyan);"></i> Sentinel-1 Stream
+            </span>
+            <span class="report-badge" style="font-size: 0.75rem;">
+              <i class="fas fa-lock" style="color: var(--accent-emerald);"></i> HTTPS Secure
+            </span>
           </div>
 
-          <!-- Canvas Container (Centered & Large) -->
-          <div class="pdf-canvas-container" id="pdfCanvasContainer">
-            <div class="pdf-loading-indicator" id="pdfLoadingIndicator">
-              <i class="fas fa-spinner fa-spin"></i> Loading Official NARSS Report...
+          <h3 class="api-qr-title">GeoVision Cloud API Gateway</h3>
+          <p class="api-qr-desc">
+            Direct QR access point for developers, researchers, and mobile GIS clients to connect to Sentinel-1 SAR classification models, GEE backscatter pipelines, and real-time spatial analysis endpoints.
+          </p>
+
+          <div class="api-qr-features">
+            <div class="api-qr-feature-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Google Earth Engine (GEE) cloud-to-client raster processing pipeline</span>
             </div>
-            <div class="pdf-canvas-wrapper">
-              <canvas id="pdfRenderCanvas" class="pdf-canvas"></canvas>
+            <div class="api-qr-feature-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Multi-temporal VV/VH polarimetric SAR backscatter time-series streaming</span>
             </div>
-            <div id="pdfAllPagesContainer" class="pdf-all-pages-container" style="display:none;"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= Contact & Social Section ================= -->
-    <section class="contact-section" id="contact">
-      <div class="section-header">
-        <span class="section-tag">Get in Touch</span>
-        <h2 class="section-title">Connect With GeoVision</h2>
-        <p class="section-subtitle">Reach out to discuss GIS projects, remote sensing collaborations, or mobile platform
-          access.</p>
-      </div>
-
-      <!-- Team Members Profile Cards Grid (5 Cards with Photos & All Social Media) -->
-      <div class="team-cards-grid">
-
-        <div class="team-profile-card">
-          <div class="team-avatar-container">
-            <img src="images/dr mohamed eladhma.jpg" alt="Dr. MOhamed Aladham" class="team-avatar-img">
-            <span class="team-status-badge">Lead Developer</span>
-          </div>
-          <div class="team-info">
-            <h3 class="team-name">Dr. MOhamed Aladham </h3>
-            <p class="team-role">Supersivor</p>
-          </div>
-          <div class="team-social-links">
-            <a href="https://www.facebook.com/share/1HnopVjyD4/" target="_blank" class="team-social-btn icon-facebook"
-              title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
-              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
-              title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
-              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
-                class="fab fa-linkedin-in"></i></a>
-          </div>
-          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
-            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-
-        <!-- Member 1 -->
-        <div class="team-profile-card">
-          <div class="team-avatar-container">
-            <img src="images/omar.jpeg" alt="Omar Mostafa Mohamed" class="team-avatar-img">
-            <span class="team-status-badge">Lead Developer</span>
-          </div>
-          <div class="team-info">
-            <h3 class="team-name">Omar Mostafa Mohamed</h3>
-            <p class="team-role">Team Leader</p>
-            <p class="team-bio">Specializing in Google Earth Engine cloud pipelines, Sentinel-1 SAR classification, and
-              WebGIS architecture.</p>
-          </div>
-          <div class="team-social-links">
-            <a href="https://www.facebook.com/share/1HnopVjyD4/" target="_blank" class="team-social-btn icon-facebook"
-              title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
-              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
-              title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
-              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
-                class="fab fa-linkedin-in"></i></a>
-          </div>
-          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
-            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- Member 2 -->
-        <div class="team-profile-card">
-          <div class="team-avatar-container">
-            <img src="images/mahmoud.jpeg" alt="Mahmoud Tarek Fathy" class="team-avatar-img">
-            <span class="team-status-badge">SAR Specialist</span>
-          </div>
-          <div class="team-info">
-            <h3 class="team-name">Mahmoud Tarek Fathy</h3>
-            <p class="team-role">SAR Image Processing & Radar Analyst</p>
-            <p class="team-bio">Expert in multi-temporal polarimetric SAR data preprocessing, radiometric calibration,
-              and
-              speckle noise filtering.</p>
-          </div>
-          <div class="team-social-links">
-            <a href="https://www.facebook.com/share/1BRzJCteLX/" target="_blank" class="team-social-btn icon-facebook"
-              title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
-              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="" target="_blank" class="team-social-btn icon-whatsapp" title="WhatsApp"><i
-                class="fab fa-whatsapp"></i></a>
-            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
-              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
-                class="fab fa-linkedin-in"></i></a>
-          </div>
-          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
-            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- Member 3 -->
-        <div class="team-profile-card">
-          <div class="team-avatar-container">
-            <img src="images/youssef.jpeg" alt="Youssef Salam" class="team-avatar-img">
-            <span class="team-status-badge">Data Scientist</span>
-          </div>
-          <div class="team-info">
-            <h3 class="team-name">Youssef Salam</h3>
-            <p class="team-role">Crop Phenology & AI Researcher</p>
-            <p class="team-bio">Focusing on seasonal crop growth modeling, GLCM texture feature extraction, and NDVI/VCI
-              vegetation indices.</p>
-          </div>
-          <div class="team-social-links">
-            <a href="https://www.facebook.com/youssef.sallam.9277?mibextid=wwXIfr&mibextid=wwXIfr" target="_blank"
-              class="team-social-btn icon-facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
-              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="" target="_blank" class="team-social-btn icon-whatsapp" title="WhatsApp"><i
-                class="fab fa-whatsapp"></i></a>
-            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
-              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
-                class="fab fa-linkedin-in"></i></a>
-          </div>
-          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
-            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- Member 4 -->
-        <div class="team-profile-card">
-          <div class="team-avatar-container">
-            <img src="images/nasssar.jpeg" alt="Omar Naaser Ahmed" class="team-avatar-img">
-            <span class="team-status-badge">ML Engineer</span>
-          </div>
-          <div class="team-info">
-            <h3 class="team-name">Omar Naaser Ahmed</h3>
-            <p class="team-role">Machine Learning & Geospatial AI</p>
-            <p class="team-bio">Designing Random Forest ensemble classifiers, confusion matrix evaluation, and cloud
-              scalable inference.</p>
-          </div>
-          <div class="team-social-links">
-            <a href="https://www.facebook.com/share/1CKgm3kQRB/" target="_blank" class="team-social-btn icon-facebook"
-              title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
-              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
-              title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
-              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
-                class="fab fa-linkedin-in"></i></a>
-          </div>
-          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
-            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <!-- Member 5 -->
-        <div class="team-profile-card">
-          <div class="team-avatar-container">
-            <img src="images/member5.jpg" alt="Habiba Magdy Bashandy" class="team-avatar-img">
-            <span class="team-status-badge">Cartographer</span>
-          </div>
-          <div class="team-info">
-            <h3 class="team-name">Habiba Magdy Bashandy</h3>
-            <p class="team-role">Cartography & WebGIS Interface</p>
-            <p class="team-bio">Specializing in high-precision spatial layouts, interactive Leaflet/Three.js 3D earth,
-              and
-              vector parcel styling.</p>
-          </div>
-          <div class="team-social-links">
-            <a href="https://www.facebook.com/share/1HnopVjyD4/" target="_blank" class="team-social-btn icon-facebook"
-              title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
-              class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
-              title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
-              class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
-                class="fab fa-linkedin-in"></i></a>
-          </div>
-          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
-            <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Scan Mobile QR Trigger Box -->
-      <div class="qr-trigger-card" id="qrTriggerCard">
-        <div class="qr-trigger-content">
-          <h3><i class="fas fa-qrcode" style="color: var(--accent-cyan); margin-right: 0.5rem;"></i> Scan QR Code for
-            Mobile Access</h3>
-          <p>Click here to open the high-resolution QR modal for instant mobile phone preview.</p>
-        </div>
-        <button class="btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.875rem;">
-          <i class="fas fa-mobile-alt"></i> Scan QR
-        </button>
-      </div>
-    </section>
-
-    <!-- ================= QR Code Glass Modal ================= -->
-    <div class="modal-backdrop" id="qrModalBackdrop">
-      <div class="modal-container">
-        <button class="modal-close-btn" id="qrModalClose" aria-label="Close Modal">
-          <i class="fas fa-times"></i>
-        </button>
-
-        <h3 class="modal-title">Scan Mobile QR Code</h3>
-        <p class="modal-subtitle">Scan using your smartphone camera to connect instantly.</p>
-
-        <div class="qr-tabs">
-          <button class="qr-tab-btn active" data-qr="platform">Platform</button>
-          <button class="qr-tab-btn" data-qr="facebook">Facebook</button>
-          <button class="qr-tab-btn" data-qr="instagram">Instagram</button>
-          <button class="qr-tab-btn" data-qr="whatsapp">WhatsApp</button>
-        </div>
-
-        <div class="qr-image-display">
-          <img src="images/qr-platform.png" id="qrImageDisplay" alt="GeoVision Platform QR Code">
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= GeoTIFF & Vector Layer Export Glass Modal ================= -->
-    <div class="modal-backdrop" id="exportModalBackdrop">
-      <div class="modal-container export-modal-container">
-        <button class="modal-close-btn" id="exportModalClose" aria-label="Close Modal">
-          <i class="fas fa-times"></i>
-        </button>
-
-        <div class="modal-header-badge">
-          <i class="fas fa-file-export"></i> Spatial Data Exporter
-        </div>
-
-        <h3 class="modal-title">Export WebGIS & GEE Data</h3>
-        <p class="modal-subtitle">Generate Cloud-Optimized GeoTIFF rasters or vector feature collections.</p>
-
-        <!-- Active Layer Badge -->
-        <div class="export-layer-info">
-          <i class="fas fa-layer-group" style="color: var(--accent-cyan);"></i>
-          <div>
-            <span
-              style="font-size: 0.75rem; color: var(--text-muted); display: block; text-transform: uppercase;">Selected
-              Target Layer</span>
-            <strong id="exportActiveLayerName" style="color: var(--text-primary); font-size: 0.95rem;">Sentinel-1 SAR
-              Crop
-              Classification (GEE)</strong>
-          </div>
-        </div>
-
-        <!-- Export Form Controls -->
-        <div class="export-form-grid">
-          <div class="form-group">
-            <label class="form-label"><i class="fas fa-file-code"></i> Export Format</label>
-            <select class="form-select" id="exportFormatSelect">
-              <option value="tif">🌐 GeoTIFF Raster (.tif) - 10m Cloud-Optimized</option>
-              <option value="geojson" selected>📐 GeoJSON Vector (.geojson) - Crop Parcels & Features</option>
-              <option value="kml">🗺️ KML Vector (.kml) - Google Earth Markup</option>
-              <option value="csv">📊 CSV Table (.csv) - Sampling Grid Lat/Lng & dB</option>
-            </select>
+            <div class="api-qr-feature-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Direct mobile scan integration for real-time field navigation & ground-truth validation</span>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label"><i class="fas fa-crop-alt"></i> Spatial Extent / Area</label>
-            <select class="form-select" id="exportExtentSelect">
-              <option value="viewport" selected>🖥️ Current Map Viewport</option>
-              <option value="aoi">📐 Custom Drawn Bounding Box (AOI)</option>
-              <option value="delta">🌾 Full Egypt Nile Delta Region</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label"><i class="fas fa-compass"></i> Coordinate System (CRS)</label>
-            <select class="form-select" id="exportCrsSelect">
-              <option value="EPSG:4326" selected>EPSG:4326 - WGS 84 (Geographic Lat/Lng)</option>
-              <option value="EPSG:32636">EPSG:32636 - WGS 84 / UTM Zone 36N (Meters)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label"><i class="fas fa-sliders-h"></i> Resolution / Scale</label>
-            <select class="form-select" id="exportResSelect">
-              <option value="10">10 Meters High Resolution (Sentinel-1 SAR)</option>
-              <option value="30">30 Meters Medium Resolution (Landsat/GEE)</option>
-              <option value="100">100 Meters Regional Overview</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Extent Info Box -->
-        <div class="export-extent-box" id="exportExtentDetails">
-          <strong>Bounds:</strong> Loading map extent...
-        </div>
-
-        <!-- Live Export Status Indicator -->
-        <div class="export-status-box" id="exportStatusBox" style="display: none;"></div>
-
-        <div class="modal-actions">
-          <button class="btn-secondary" id="exportModalCancel" style="padding: 0.65rem 1.25rem; font-size: 0.875rem;">
-            Cancel
-          </button>
-          <button class="btn-primary" id="startExportBtn" style="padding: 0.65rem 1.5rem; font-size: 0.875rem;">
-            <i class="fas fa-download"></i> Generate & Download
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= Image Lightbox Modal ================= -->
-    <div class="lightbox-modal" id="lightboxModal">
-      <div class="lightbox-content">
-        <img src="" id="lightboxImage" alt="Enlarged Project Layout">
-      </div>
-    </div>
-
-    <!-- ================= Footer ================= -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-top">
-          <div>
-            <a href="#" class="brand-logo" style="margin-bottom: 0.5rem;">
-              <div class="brand-logo-icon">
-                <i class="fas fa-globe-africa"></i>
-              </div>
-              <span>GeoVision Platform</span>
+          <div class="api-qr-actions">
+            <a href="images/qr-api.png" download="GeoVision_API_QR.png" class="btn-primary" style="padding: 0.65rem 1.35rem; font-size: 0.85rem;">
+              <i class="fas fa-download"></i> Download QR
             </a>
-            <p style="color: var(--text-muted); font-size: 0.875rem; max-width: 400px;">
-              Mapping the Future with Cloud GIS & Sentinel-1 Synthetic Aperture Radar.
-            </p>
-          </div>
-
-
-        </div>
-
-        <div class="footer-bottom">
-          <span>© 2026 GeoVision Platform. All rights reserved.</span>
-          <div class="nav-status-pill" style="padding: 0.25rem 0.75rem; font-size: 0.75rem;">
-            <span class="pulse-dot"></span> System Operational • GEE API Active
+            <a href="images/qr-api.png" data-lightbox class="btn-secondary" style="padding: 0.65rem 1.25rem; font-size: 0.85rem;">
+              <i class="fas fa-expand"></i> Preview Fullscreen
+            </a>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <!-- ================= Scripts ================= -->
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- ================= Contact & Social Section ================= -->
+  <section class="contact-section" id="contact">
+    <div class="section-header">
+      <span class="section-tag">Get in Touch</span>
+      <h2 class="section-title">Connect With GeoVision</h2>
+      <p class="section-subtitle">Reach out to discuss GIS projects, remote sensing collaborations, or mobile platform
+        access.</p>
+    </div>
 
-    <!-- Three.js Library & OrbitControls -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- Team Members Profile Cards Grid (5 Cards with Photos & All Social Media) -->
+    <div class="team-cards-grid">
 
-    <!-- PDF.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+      <div class="team-profile-card">
+        <div class="team-avatar-container">
+          <img src="images/dr mohamed eladhma.jpg" alt="Dr. MOhamed Aladham" class="team-avatar-img">
+          <span class="team-status-badge">Lead Developer</span>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Dr. MOhamed Aladham </h3>
+          <p class="team-role">Supersivor</p>
+        </div>
+        <div class="team-social-links">
+          <a href="https://www.facebook.com/share/1HnopVjyD4/" target="_blank" class="team-social-btn icon-facebook"
+            title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+            class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
+            title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+            class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+        <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+          <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
 
-    <!-- GeoVision Custom Application Scripts -->
-    <script src="JS/earth.js"></script>
-    <script src="JS/map.js"></script>
-    <script src="JS/export.js"></script>
-    <script src="JS/app.js"></script>
+
+      <!-- Member 1 -->
+      <div class="team-profile-card">
+        <div class="team-avatar-container">
+          <img src="images/omar.jpeg" alt="Omar Mostafa Mohamed" class="team-avatar-img">
+          <span class="team-status-badge">Lead Developer</span>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Omar Mostafa Mohamed</h3>
+          <p class="team-role">Team Leader</p>
+          <p class="team-bio">Specializing in Google Earth Engine cloud pipelines, Sentinel-1 SAR classification, and
+            WebGIS architecture.</p>
+        </div>
+        <div class="team-social-links">
+          <a href="https://www.facebook.com/share/1HnopVjyD4/" target="_blank" class="team-social-btn icon-facebook"
+            title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+            class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-social-btn icon-whatsapp"
+            title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+            class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+        <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+          <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="team-profile-card">
+        <div class="team-avatar-container">
+          <img src="images/mahmoud.jpeg" alt="Mahmoud Tarek Fathy" class="team-avatar-img">
+          <span class="team-status-badge">SAR Specialist</span>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Mahmoud Tarek Fathy</h3>
+          <p class="team-role">SAR Image Processing & Radar Analyst</p>
+          <p class="team-bio">Expert in multi-temporal polarimetric SAR data preprocessing, radiometric calibration,
+            and
+            speckle noise filtering.</p>
+        </div>
+        <div class="team-social-links">
+          <a href="https://www.facebook.com/share/1BRzJCteLX/" target="_blank" class="team-social-btn icon-facebook"
+            title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+            class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href=" https://wa.me/qr/NXAL3TO6K3DXG1" target="_blank" class="team-social-btn icon-whatsapp"
+            title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+            class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+        <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+          <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Member 3 -->
+      <div class="team-profile-card">
+        <div class="team-avatar-container">
+          <img src="images/youssef.jpeg" alt="Youssef Salam" class="team-avatar-img">
+          <span class="team-status-badge">Data Scientist</span>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Youssef Salam</h3>
+          <p class="team-role">Crop Phenology & AI Researcher</p>
+          <p class="team-bio">Focusing on seasonal crop growth modeling, GLCM texture feature extraction, and NDVI/VCI
+            vegetation indices.</p>
+        </div>
+        <div class="team-social-links">
+          <a href="https://www.facebook.com/youssef.sallam.9277?mibextid=wwXIfr&mibextid=wwXIfr" target="_blank"
+            class="team-social-btn icon-facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+            class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/qr/ZT4NL7CMUHSBL1" target="_blank" class="team-social-btn icon-whatsapp"
+            title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+            class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+        <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+          <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Member 4 -->
+      <div class="team-profile-card">
+        <div class="team-avatar-container">
+          <img src="images/nasssar.jpeg" alt="Omar Naaser Ahmed" class="team-avatar-img">
+          <span class="team-status-badge">ML Engineer</span>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Omar Nassar Ahmed</h3>
+          <p class="team-role">Machine Learning & Geospatial AI</p>
+          <p class="team-bio">Designing Random Forest ensemble classifiers, confusion matrix evaluation, and cloud
+            scalable inference.</p>
+        </div>
+        <div class="team-social-links">
+          <a href="https://www.facebook.com/share/1CKgm3kQRB/" target="_blank" class="team-social-btn icon-facebook"
+            title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+            class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/qr/NXAL3TO6K3DXG1" target="_blank" class="team-social-btn icon-whatsapp"
+            title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+            class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+        <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+          <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Member 5 -->
+      <div class="team-profile-card">
+        <div class="team-avatar-container">
+          <img src="images/habiba.jpeg" alt="Habiba Magdy Bashandy" class="team-avatar-img">
+          <span class="team-status-badge">Cartographer</span>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Habiba Magdy Bashandy</h3>
+          <p class="team-role">Cartography & WebGIS Interface</p>
+          <p class="team-bio">Specializing in high-precision spatial layouts, interactive Leaflet/Three.js 3D earth,
+            and
+            vector parcel styling.</p>
+        </div>
+        <div class="team-social-links">
+          <a href="https://www.facebook.com/share/1HnopVjyD4/" target="_blank" class="team-social-btn icon-facebook"
+            title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/omar_mostafa_514?igsi=aWY1OXBua2Y3azBr" target="_blank"
+            class="team-social-btn icon-instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/qr/6YENTN3FSUYDD1" target="_blank" class="team-social-btn icon-whatsapp"
+            title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://om6397641-gif.github.io/crop-classification/" target="_blank"
+            class="team-social-btn icon-github" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="team-social-btn icon-linkedin" title="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+        <a href="https://wa.me/qr/ZFACNA3SVTU4L1" target="_blank" class="team-contact-action">
+          <span>Chat on WhatsApp</span> <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scan Mobile QR Trigger Box -->
+    <div class="qr-trigger-card" id="qrTriggerCard">
+      <div class="qr-trigger-content">
+        <h3><i class="fas fa-qrcode" style="color: var(--accent-cyan); margin-right: 0.5rem;"></i> Scan QR Code for
+          Mobile Access</h3>
+        <p>Click here to open the high-resolution QR modal for instant mobile phone preview.</p>
+      </div>
+      <button class="btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.875rem;">
+        <i class="fas fa-mobile-alt"></i> Scan QR
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= QR Code Glass Modal ================= -->
+  <div class="modal-backdrop" id="qrModalBackdrop">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="qrModalClose" aria-label="Close Modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <h3 class="modal-title">Scan Mobile QR Code</h3>
+      <p class="modal-subtitle">Scan using your smartphone camera to connect instantly.</p>
+
+      <div class="qr-tabs">
+        <button class="qr-tab-btn active" data-qr="platform">Platform</button>
+        <button class="qr-tab-btn" data-qr="facebook">Facebook</button>
+        <button class="qr-tab-btn" data-qr="instagram">Instagram</button>
+        <button class="qr-tab-btn" data-qr="whatsapp">WhatsApp</button>
+      </div>
+
+      <div class="qr-image-display">
+        <img src="images/qr-platform.png" id="qrImageDisplay" alt="GeoVision Platform QR Code">
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= GeoTIFF & Vector Layer Export Glass Modal ================= -->
+  <div class="modal-backdrop" id="exportModalBackdrop">
+    <div class="modal-container export-modal-container">
+      <button class="modal-close-btn" id="exportModalClose" aria-label="Close Modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="modal-header-badge">
+        <i class="fas fa-file-export"></i> Spatial Data Exporter
+      </div>
+
+      <h3 class="modal-title">Export WebGIS & GEE Data</h3>
+      <p class="modal-subtitle">Generate Cloud-Optimized GeoTIFF rasters or vector feature collections.</p>
+
+      <!-- Active Layer Badge -->
+      <div class="export-layer-info">
+        <i class="fas fa-layer-group" style="color: var(--accent-cyan);"></i>
+        <div>
+          <span
+            style="font-size: 0.75rem; color: var(--text-muted); display: block; text-transform: uppercase;">Selected
+            Target Layer</span>
+          <strong id="exportActiveLayerName" style="color: var(--text-primary); font-size: 0.95rem;">Sentinel-1 SAR
+            Crop
+            Classification (GEE)</strong>
+        </div>
+      </div>
+
+      <!-- Export Form Controls -->
+      <div class="export-form-grid">
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-file-code"></i> Export Format</label>
+          <select class="form-select" id="exportFormatSelect">
+            <option value="tif">🌐 GeoTIFF Raster (.tif) - 10m Cloud-Optimized</option>
+            <option value="geojson" selected>📐 GeoJSON Vector (.geojson) - Crop Parcels & Features</option>
+            <option value="kml">🗺️ KML Vector (.kml) - Google Earth Markup</option>
+            <option value="csv">📊 CSV Table (.csv) - Sampling Grid Lat/Lng & dB</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-crop-alt"></i> Spatial Extent / Area</label>
+          <select class="form-select" id="exportExtentSelect">
+            <option value="viewport" selected>🖥️ Current Map Viewport</option>
+            <option value="aoi">📐 Custom Drawn Bounding Box (AOI)</option>
+            <option value="delta">🌾 Full Egypt Nile Delta Region</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-compass"></i> Coordinate System (CRS)</label>
+          <select class="form-select" id="exportCrsSelect">
+            <option value="EPSG:4326" selected>EPSG:4326 - WGS 84 (Geographic Lat/Lng)</option>
+            <option value="EPSG:32636">EPSG:32636 - WGS 84 / UTM Zone 36N (Meters)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-sliders-h"></i> Resolution / Scale</label>
+          <select class="form-select" id="exportResSelect">
+            <option value="10">10 Meters High Resolution (Sentinel-1 SAR)</option>
+            <option value="30">30 Meters Medium Resolution (Landsat/GEE)</option>
+            <option value="100">100 Meters Regional Overview</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Extent Info Box -->
+      <div class="export-extent-box" id="exportExtentDetails">
+        <strong>Bounds:</strong> Loading map extent...
+      </div>
+
+      <!-- Live Export Status Indicator -->
+      <div class="export-status-box" id="exportStatusBox" style="display: none;"></div>
+
+      <div class="modal-actions">
+        <button class="btn-secondary" id="exportModalCancel" style="padding: 0.65rem 1.25rem; font-size: 0.875rem;">
+          Cancel
+        </button>
+        <button class="btn-primary" id="startExportBtn" style="padding: 0.65rem 1.5rem; font-size: 0.875rem;">
+          <i class="fas fa-download"></i> Generate & Download
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Image Lightbox Modal ================= -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <!-- Floating Lightbox Controls Header -->
+    <div class="lightbox-toolbar" id="lightboxToolbar">
+      <div class="lightbox-toolbar-left">
+        <span class="lightbox-title-badge"><i class="fas fa-map-marked-alt"></i> High-Resolution GIS Layout</span>
+      </div>
+
+      <div class="lightbox-toolbar-center">
+        <button class="lightbox-tool-btn" id="lightboxZoomOut" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+        <span class="lightbox-zoom-val" id="lightboxZoomVal">100%</span>
+        <button class="lightbox-tool-btn" id="lightboxZoomIn" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+        <div class="lightbox-toolbar-divider"></div>
+        <button class="lightbox-tool-btn active" id="lightboxScrollModeBtn" title="Scrollable Full Layout"><i class="fas fa-arrows-alt-v"></i> Scrollable</button>
+        <button class="lightbox-tool-btn" id="lightboxFitModeBtn" title="Fit to Screen"><i class="fas fa-compress-arrows-alt"></i> Fit Screen</button>
+      </div>
+
+      <div class="lightbox-toolbar-right">
+        <a href="" id="lightboxDownloadBtn" download class="lightbox-tool-btn" title="Download Image"><i class="fas fa-download"></i></a>
+        <a href="" id="lightboxOpenTabBtn" target="_blank" class="lightbox-tool-btn" title="Open in new tab"><i class="fas fa-external-link-alt"></i></a>
+        <button class="lightbox-tool-btn lightbox-close-btn" id="lightboxCloseBtn" title="Close (Esc)"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+
+    <!-- Scrollable Image Canvas Container -->
+    <div class="lightbox-scroll-wrapper" id="lightboxScrollWrapper">
+      <div class="lightbox-content scroll-mode" id="lightboxContent">
+        <img src="" id="lightboxImage" alt="Enlarged GIS Project Layout">
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Footer ================= -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div>
+          <a href="#" class="brand-logo" style="margin-bottom: 0.5rem;">
+            <div class="brand-logo-icon">
+              <i class="fas fa-globe-africa"></i>
+            </div>
+            <span>GeoVision Platform</span>
+          </a>
+          <p style="color: var(--text-muted); font-size: 0.875rem; max-width: 400px;">
+            Mapping the Future with Cloud GIS & Sentinel-1 Synthetic Aperture Radar.
+          </p>
+        </div>
+
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 GeoVision Platform. All rights reserved.</span>
+        <div class="nav-status-pill" style="padding: 0.25rem 0.75rem; font-size: 0.75rem;">
+          <span class="pulse-dot"></span> System Operational • GEE API Active
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= Scripts ================= -->
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Three.js Library & OrbitControls -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- PDF.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <!-- GeoVision Custom Application Scripts -->
+  <script src="JS/earth.js"></script>
+  <script src="JS/map.js"></script>
+  <script src="JS/export.js"></script>
+  <script src="JS/app.js"></script>
 
 </body>
 

@@ -60,7 +60,8 @@ function setupQRModal() {
     platform: "images/qr-platform.png",
     facebook: "images/qr-facebook.png",
     instagram: "images/qr-instagram.png",
-    whatsapp: "images/qr-whatsapp.png"
+    whatsapp: "images/qr-whatsapp.png",
+    api: "images/qr-api.png"
   };
 
   if (qrTriggerCard && qrBackdrop) {
@@ -103,10 +104,71 @@ function setupQRModal() {
   });
 }
 
-// Image Lightbox Modal for Project Layouts
+// Image Lightbox Modal for Project Layouts with Scroll & Zoom Controls
 function setupImageLightbox() {
   const lightboxModal = document.getElementById("lightboxModal");
   const lightboxImage = document.getElementById("lightboxImage");
+  const lightboxContent = document.getElementById("lightboxContent");
+  const lightboxScrollWrapper = document.getElementById("lightboxScrollWrapper");
+  const closeBtn = document.getElementById("lightboxCloseBtn");
+  const zoomInBtn = document.getElementById("lightboxZoomIn");
+  const zoomOutBtn = document.getElementById("lightboxZoomOut");
+  const zoomVal = document.getElementById("lightboxZoomVal");
+  const scrollModeBtn = document.getElementById("lightboxScrollModeBtn");
+  const fitModeBtn = document.getElementById("lightboxFitModeBtn");
+  const downloadBtn = document.getElementById("lightboxDownloadBtn");
+  const openTabBtn = document.getElementById("lightboxOpenTabBtn");
+
+  let currentZoom = 100;
+  let isFitMode = false;
+
+  function setZoom(val) {
+    currentZoom = Math.min(250, Math.max(50, val));
+    if (zoomVal) zoomVal.textContent = currentZoom + "%";
+    if (lightboxContent && lightboxImage) {
+      if (!isFitMode) {
+        const baseWidth = 1050;
+        lightboxContent.style.maxWidth = `${Math.round(baseWidth * (currentZoom / 100))}px`;
+        lightboxContent.style.width = "100%";
+        lightboxImage.style.transform = "none";
+      } else {
+        lightboxImage.style.transform = `scale(${currentZoom / 100})`;
+      }
+    }
+  }
+
+  function switchToScrollMode() {
+    isFitMode = false;
+    scrollModeBtn?.classList.add("active");
+    fitModeBtn?.classList.remove("active");
+    if (lightboxContent && lightboxImage) {
+      lightboxContent.classList.remove("fit-mode");
+      lightboxContent.classList.add("scroll-mode");
+      lightboxImage.style.transform = "none";
+    }
+    setZoom(100);
+    if (lightboxScrollWrapper) {
+      lightboxScrollWrapper.scrollTop = 0;
+    }
+  }
+
+  function switchToFitMode() {
+    isFitMode = true;
+    fitModeBtn?.classList.add("active");
+    scrollModeBtn?.classList.remove("active");
+    if (lightboxContent && lightboxImage) {
+      lightboxContent.classList.remove("scroll-mode");
+      lightboxContent.classList.add("fit-mode");
+      lightboxContent.style.maxWidth = "90vw";
+      lightboxContent.style.width = "auto";
+    }
+    setZoom(100);
+  }
+
+  function closeLightbox() {
+    lightboxModal?.classList.remove("active");
+    document.body.style.overflow = "";
+  }
 
   document.querySelectorAll("[data-lightbox]").forEach(trigger => {
     trigger.addEventListener("click", function (e) {
@@ -114,22 +176,41 @@ function setupImageLightbox() {
       const imgSrc = this.getAttribute("href") || this.getAttribute("data-src");
       if (lightboxModal && lightboxImage && imgSrc) {
         lightboxImage.src = imgSrc;
+        if (downloadBtn) {
+          downloadBtn.href = imgSrc;
+          const name = imgSrc.split("/").pop() || "project-layout.jpg";
+          downloadBtn.setAttribute("download", name);
+        }
+        if (openTabBtn) {
+          openTabBtn.href = imgSrc;
+        }
+        switchToScrollMode();
         lightboxModal.classList.add("active");
+        document.body.style.overflow = "hidden";
       }
     });
   });
 
-  if (lightboxModal) {
-    lightboxModal.addEventListener("click", function () {
-      lightboxModal.classList.remove("active");
-    });
+  closeBtn?.addEventListener("click", closeLightbox);
+  scrollModeBtn?.addEventListener("click", switchToScrollMode);
+  fitModeBtn?.addEventListener("click", switchToFitMode);
 
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && lightboxModal.classList.contains("active")) {
-        lightboxModal.classList.remove("active");
+  zoomInBtn?.addEventListener("click", () => setZoom(currentZoom + 20));
+  zoomOutBtn?.addEventListener("click", () => setZoom(currentZoom - 20));
+
+  if (lightboxScrollWrapper) {
+    lightboxScrollWrapper.addEventListener("click", function (e) {
+      if (e.target === lightboxScrollWrapper) {
+        closeLightbox();
       }
     });
   }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && lightboxModal?.classList.contains("active")) {
+      closeLightbox();
+    }
+  });
 }
 
 // Smooth Scroll Setup

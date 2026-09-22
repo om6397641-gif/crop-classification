@@ -263,6 +263,8 @@ body::before {
   font-weight: 600;
   color: var(--accent-cyan);
   margin-bottom: 1.5rem;
+
+  transform: translateY(25px);
 }
 
 .hero-title {
@@ -3060,6 +3062,54 @@ nav ul li {
 
   .Story.Map-qr-details .api-qr-desc {
     font-size: 0.88rem;
+  }
+
+}
+/* ================= NAVBAR STORY MAP ================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+/* لو Story Map أطول من باقي اللينكات */
+
+.nav-links a[href="#Story%20Map-qr"] {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .nav-links {
+    flex-wrap: wrap;
   }
 
 }

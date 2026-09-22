@@ -2218,8 +2218,9 @@ body::before {
 }
 
 /* ==========================================================================
-   API QR Section Styles
+   API QR SECTION
    ========================================================================== */
+
 .api-qr-section {
   padding: 6rem 1.5rem;
   max-width: 1280px;
@@ -2238,154 +2239,381 @@ body::before {
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+
   border: 1px solid var(--border-glass);
   border-radius: 24px;
+
   padding: 2.5rem;
+
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 2.5rem;
   align-items: center;
+
   max-width: 860px;
   width: 100%;
+
   position: relative;
   overflow: hidden;
+
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  transition:
+    all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+
+/* ================= HOVER CARD ================= */
 
 .api-qr-card-wrapper:hover {
   border-color: rgba(0, 229, 255, 0.4);
-  box-shadow: 0 25px 60px rgba(0, 229, 255, 0.15);
+
+  box-shadow:
+    0 25px 60px rgba(0, 229, 255, 0.15);
+
   transform: translateY(-4px);
 }
 
+
+/* ================= GLOW EFFECT ================= */
+
 .api-qr-card-wrapper::before {
   content: '';
+
   position: absolute;
+
   top: -50%;
   left: -50%;
+
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(0, 229, 255, 0.08), transparent 50%);
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(0, 229, 255, 0.08),
+      transparent 50%
+    );
+
   pointer-events: none;
 }
 
+
+/* ================= QR BOX ================= */
+
 .api-qr-visual-box {
   position: relative;
+
   background: #FFFFFF;
+
   padding: 1rem;
+
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
+
   width: 220px;
   height: 220px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   flex-shrink: 0;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
+
+
+/* ================= QR IMAGE ================= */
 
 .api-qr-img {
   width: 100%;
   height: 100%;
+
   object-fit: contain;
+
   border-radius: 8px;
-  transition: transform 0.3s ease;
+
+  transition:
+    transform 0.3s ease;
 }
+
+
+/* QR Hover */
 
 .api-qr-visual-box:hover .api-qr-img {
   transform: scale(1.03);
 }
 
+.api-qr-visual-box:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(0, 229, 255, 0.12);
+}
+
+
+/* ================= SCAN BADGE ================= */
+
 .api-qr-scan-badge {
   position: absolute;
+
   bottom: -12px;
+
   background: var(--accent-cyan);
+
   color: #000;
+
   font-size: 0.725rem;
+
   font-weight: 700;
+
   padding: 0.3rem 0.8rem;
+
   border-radius: 9999px;
-  box-shadow: 0 4px 12px var(--accent-cyan-glow);
+
+  box-shadow:
+    0 4px 12px var(--accent-cyan-glow);
+
   display: flex;
   align-items: center;
+
   gap: 0.35rem;
+
   letter-spacing: 0.5px;
+
   text-transform: uppercase;
+
+  white-space: nowrap;
 }
+
+
+/* ================= DETAILS ================= */
 
 .api-qr-details {
   display: flex;
+
   flex-direction: column;
+
   gap: 1rem;
+
+  position: relative;
+
+  z-index: 1;
 }
+
+
+/* ================= BADGES ================= */
 
 .api-qr-badge-row {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 0.5rem;
+
   align-items: center;
 }
+
+
+/* ================= TITLE ================= */
 
 .api-qr-title {
   font-family: var(--font-heading);
+
   font-size: 1.6rem;
+
   font-weight: 700;
+
   color: var(--text-primary);
+
   line-height: 1.3;
+
+  margin: 0;
 }
+
+
+/* ================= DESCRIPTION ================= */
 
 .api-qr-desc {
   color: var(--text-secondary);
+
   font-size: 0.95rem;
+
   line-height: 1.6;
+
+  margin: 0;
 }
+
+
+/* ================= FEATURES ================= */
 
 .api-qr-features {
   display: flex;
+
   flex-direction: column;
+
   gap: 0.5rem;
+
   margin: 0.25rem 0;
 }
 
+
 .api-qr-feature-item {
   display: flex;
+
   align-items: center;
+
   gap: 0.6rem;
+
   font-size: 0.875rem;
+
   color: var(--text-muted);
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
 }
+
+
+/* Feature Hover */
+
+.api-qr-feature-item:hover {
+  transform: translateX(5px);
+
+  color: var(--text-secondary);
+}
+
 
 .api-qr-feature-item i {
   color: var(--accent-cyan);
+
   font-size: 0.85rem;
+
   width: 16px;
+
   text-align: center;
+
+  transition:
+    transform 0.25s ease;
 }
+
+
+.api-qr-feature-item:hover i {
+  transform: scale(1.15);
+}
+
+
+/* ================= BUTTONS ================= */
 
 .api-qr-actions {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 0.75rem;
+
   margin-top: 0.5rem;
 }
 
+
+.api-qr-actions a {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.api-qr-actions a:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 229, 255, 0.15);
+}
+
+
+/* ==========================================================================
+   TABLET / MOBILE
+   ========================================================================== */
+
 @media (max-width: 768px) {
+
   .api-qr-card-wrapper {
     grid-template-columns: 1fr;
+
     text-align: center;
+
     justify-items: center;
+
     padding: 2rem 1.5rem;
+
     gap: 2rem;
   }
-  
+
+
+  .api-qr-visual-box {
+    width: 190px;
+    height: 190px;
+  }
+
+
   .api-qr-actions {
     justify-content: center;
   }
-  
+
+
   .api-qr-features {
     align-items: flex-start;
+
     text-align: left;
+
+    width: 100%;
   }
+
+
+  .api-qr-badge-row {
+    justify-content: center;
+  }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+
+  .api-qr-section {
+    padding: 4rem 1rem;
+  }
+
+
+  .api-qr-card-wrapper {
+    padding: 1.5rem 1rem;
+
+    border-radius: 20px;
+  }
+
+
+  .api-qr-visual-box {
+    width: 170px;
+    height: 170px;
+  }
+
+
+  .api-qr-title {
+    font-size: 1.35rem;
+  }
+
+
+  .api-qr-desc {
+    font-size: 0.88rem;
+  }
+
 }
 /* ==========================
    NAVBAR FIX
@@ -2435,4 +2663,403 @@ nav ul li a {
 nav ul li {
     white-space: nowrap;
     flex-shrink: 0;
+}
+
+/* ==========================================================================
+   STORY MAP QR SECTION
+   ========================================================================== */
+
+.Story.Map-qr-section {
+  padding: 6rem 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.Story.Map-qr-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.Story.Map-qr-card-wrapper {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+
+  padding: 2.5rem;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+  align-items: center;
+
+  max-width: 860px;
+  width: 100%;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+
+  transition:
+    all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* ================= HOVER CARD ================= */
+
+.Story.Map-qr-card-wrapper:hover {
+  border-color: rgba(0, 229, 255, 0.4);
+
+  box-shadow:
+    0 25px 60px rgba(0, 229, 255, 0.15);
+
+  transform: translateY(-4px);
+}
+
+
+/* ================= GLOW EFFECT ================= */
+
+.Story.Map-qr-card-wrapper::before {
+  content: '';
+
+  position: absolute;
+
+  top: -50%;
+  left: -50%;
+
+  width: 200%;
+  height: 200%;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(0, 229, 255, 0.08),
+      transparent 50%
+    );
+
+  pointer-events: none;
+}
+
+
+/* ================= QR BOX ================= */
+
+.Story.Map-qr-visual-box {
+  position: relative;
+
+  background: #FFFFFF;
+
+  padding: 1rem;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
+
+  width: 220px;
+  height: 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* ================= QR IMAGE ================= */
+
+.Story.Map-qr-visual-box .api-qr-img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  border-radius: 8px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+/* QR Hover */
+
+.Story.Map-qr-visual-box:hover .api-qr-img {
+  transform: scale(1.03);
+}
+
+.Story.Map-qr-visual-box:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(0, 229, 255, 0.12);
+}
+
+
+/* ================= SCAN BADGE ================= */
+
+.Story.Map-qr-scan-badge {
+  position: absolute;
+
+  bottom: -12px;
+
+  background: var(--accent-cyan);
+
+  color: #000;
+
+  font-size: 0.725rem;
+
+  font-weight: 700;
+
+  padding: 0.3rem 0.8rem;
+
+  border-radius: 9999px;
+
+  box-shadow:
+    0 4px 12px var(--accent-cyan-glow);
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.35rem;
+
+  letter-spacing: 0.5px;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+
+/* ================= DETAILS ================= */
+
+.Story.Map-qr-details {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1rem;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* ================= BADGES ================= */
+
+.Story.Map-qr-badge-row {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+  align-items: center;
+}
+
+
+/* ================= TITLE ================= */
+
+.Story.Map-qr-title {
+  font-family: var(--font-heading);
+
+  font-size: 1.6rem;
+
+  font-weight: 700;
+
+  color: var(--text-primary);
+
+  line-height: 1.3;
+
+  margin: 0;
+}
+
+
+/* ================= DESCRIPTION ================= */
+
+.Story.Map-qr-details .api-qr-desc {
+  color: var(--text-secondary);
+
+  font-size: 0.95rem;
+
+  line-height: 1.6;
+
+  margin: 0;
+}
+
+
+/* ================= FEATURES ================= */
+
+.Story.Map-qr-features {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+
+  margin: 0.25rem 0;
+}
+
+
+.Story.Map-qr-feature-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.6rem;
+
+  font-size: 0.875rem;
+
+  color: var(--text-muted);
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+
+/* Feature Hover */
+
+.Story.Map-qr-feature-item:hover {
+  transform: translateX(5px);
+
+  color: var(--text-secondary);
+}
+
+
+.Story.Map-qr-feature-item i {
+  color: var(--accent-cyan);
+
+  font-size: 0.85rem;
+
+  width: 16px;
+
+  text-align: center;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.Story.Map-qr-feature-item:hover i {
+  transform: scale(1.15);
+}
+
+
+/* ================= BUTTONS ================= */
+
+.Story.Map-qr-actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.75rem;
+
+  margin-top: 0.5rem;
+}
+
+
+.Story.Map-qr-actions a {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.Story.Map-qr-actions a:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 229, 255, 0.15);
+}
+
+
+/* ==========================================================================
+   TABLET / MOBILE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  .Story.Map-qr-card-wrapper {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+    justify-items: center;
+
+    padding: 2rem 1.5rem;
+
+    gap: 2rem;
+  }
+
+
+  .Story.Map-qr-visual-box {
+    width: 190px;
+    height: 190px;
+  }
+
+
+  .Story.Map-qr-actions {
+    justify-content: center;
+  }
+
+
+  .Story.Map-qr-features {
+    align-items: flex-start;
+
+    text-align: left;
+
+    width: 100%;
+  }
+
+
+  .Story.Map-qr-badge-row {
+    justify-content: center;
+  }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+
+  .Story.Map-qr-section {
+    padding: 4rem 1rem;
+  }
+
+
+  .Story.Map-qr-card-wrapper {
+    padding: 1.5rem 1rem;
+
+    border-radius: 20px;
+  }
+
+
+  .Story.Map-qr-visual-box {
+    width: 170px;
+    height: 170px;
+  }
+
+
+  .Story.Map-qr-title {
+    font-size: 1.35rem;
+  }
+
+
+  .Story.Map-qr-details .api-qr-desc {
+    font-size: 0.88rem;
+  }
+
 }

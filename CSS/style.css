@@ -2387,3 +2387,52 @@ body::before {
     text-align: left;
   }
 }
+/* ==========================
+   NAVBAR FIX
+========================== */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    padding: 18px 35px;
+    box-sizing: border-box;
+}
+
+.logo,
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 35px;
+}
+
+.nav-links,
+.navbar-links,
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a,
+.navbar-links a,
+nav ul li a {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.nav-links li,
+.navbar-links li,
+nav ul li {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
